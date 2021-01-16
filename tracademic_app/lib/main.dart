@@ -35,11 +35,11 @@ class _GraphsState extends State<Graphs> {
 
   _GraphsState() {
     for (var i = 0; i < Courses.courses.length; i++) {
-      features.add(Feature(
-        title: Courses.courses[i],
-        color: Courses.color[i],
-        data: Courses.data[i],
-      ));
+      this.features.add(Feature(
+            title: Courses.courses[i],
+            color: Courses.color[i],
+            data: Courses.data[i],
+          ));
     }
   }
 
@@ -62,7 +62,7 @@ class _GraphsState extends State<Graphs> {
           ),
         ),
         LineGraph(
-          features: features,
+          features: this.features,
           size: Size(500, 500),
           labelX: Courses.weeks,
           labelY: Courses.gradeIncrements,
