@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:draw_graph/draw_graph.dart';
 import 'package:draw_graph/models/feature.dart';
-import 'constants.dart' as Courses;
+import 'constants.dart' as Constants;
 
 final Color darkBlue = Color.fromARGB(255, 18, 32, 47);
 
@@ -31,17 +31,7 @@ class Graphs extends StatefulWidget {
 }
 
 class _GraphsState extends State<Graphs> {
-  List<Feature> features = [];
-
-  _GraphsState() {
-    for (var i = 0; i < Courses.courses.length; i++) {
-      this.features.add(Feature(
-            title: Courses.courses[i],
-            color: Courses.color[i],
-            data: Courses.data[i],
-          ));
-    }
-  }
+  List<Feature> features = Constants.features;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +43,7 @@ class _GraphsState extends State<Graphs> {
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 64.0),
           child: Text(
-            "Tasks Track",
+            "Term Grades",
             style: TextStyle(
               fontSize: 28,
               fontWeight: FontWeight.bold,
@@ -62,10 +52,10 @@ class _GraphsState extends State<Graphs> {
           ),
         ),
         LineGraph(
-          features: this.features,
-          size: Size(500, 500),
-          labelX: Courses.weeks,
-          labelY: Courses.gradeIncrements,
+          features: Constants.features,
+          size: Size(500, 450),
+          labelX: Constants.weeks,
+          labelY: Constants.gradeIncrements,
           showDescription: true,
           graphColor: Colors.white30,
         ),
