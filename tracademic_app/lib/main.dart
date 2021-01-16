@@ -10,7 +10,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  List<Feature> features = [];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,20 +19,26 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text("DrawGraph Package"),
         ),
-        body: MyScreen(features),
+        body: Graphs(),
       ),
     );
   }
 }
 
-class MyScreen extends StatelessWidget {
-  List<Feature> features;
-  MyScreen(this.features) {
+class Graphs extends StatefulWidget {
+  @override
+  _GraphsState createState() => _GraphsState();
+}
+
+class _GraphsState extends State<Graphs> {
+  List<Feature> features = [];
+
+  _GraphsState() {
     for (var i = 0; i < Courses.courses.length; i++) {
       features.add(Feature(
         title: Courses.courses[i],
         color: Courses.color[i],
-        data: Courses.data,
+        data: Courses.data[i],
       ));
     }
   }
@@ -58,9 +63,9 @@ class MyScreen extends StatelessWidget {
         ),
         LineGraph(
           features: features,
-          size: Size(320, 300),
-          labelX: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5'],
-          labelY: ['20%', '40%', '60%', '80%', '100%'],
+          size: Size(500, 500),
+          labelX: Courses.weeks,
+          labelY: Courses.gradeIncrements,
           showDescription: true,
           graphColor: Colors.white30,
         ),
