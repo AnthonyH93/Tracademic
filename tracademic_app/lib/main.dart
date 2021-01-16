@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'graphs.dart';
 
-final Color darkBlue = Color.fromARGB(255, 18, 32, 47);
+import 'LoginPage.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,10 +14,17 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: darkBlue),
       home: Scaffold(
+        backgroundColor: Color.fromRGBO(54, 66, 97, 100),
         appBar: AppBar(
-          title: Text("DrawGraph Package"),
+          backgroundColor: Color.fromRGBO(54, 66, 97, 100),
+          title: Center(
+            child: Text(''),
+          ),
         ),
-        body: Graphs(),
+        body: Padding(
+          padding: EdgeInsets.fromLTRB(40, 50, 40, 0),
+          child: LoginPage(),
+        ),
       ),
     );
   }

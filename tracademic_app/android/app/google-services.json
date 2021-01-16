@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "305208798182",
+    "project_id": "tracademic-a33ad",
+    "storage_bucket": "tracademic-a33ad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:305208798182:android:d77f2bfa1f258a1c348427",
+        "android_client_info": {
+          "package_name": "com.example.tracademic_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "305208798182-bb73h4cva12at5jvbglupg85lfmqombe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAr0P2r-3nBajdHODBO-RZzoqNVW_CMy0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "305208798182-bb73h4cva12at5jvbglupg85lfmqombe.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "305208798182-fa28d0j0q8rbm5blrucsi26d3dh71s0d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tracademicApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
