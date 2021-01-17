@@ -54,9 +54,9 @@ class _OverviewPageState extends State<OverviewPage> {
                                 TabBarDemo(courses[index], index)));
                   },
                   child: ListTile(
-                    title: Text('${Constants.courses_courses[index]}',
+                    title: Text('${courses[index]}',
                         style: TextStyle(fontSize: 24, color: Colors.white)),
-                    trailing: Text('${Constants.courses_courses_grades[index]}',
+                    trailing: Text('${grades[index]}',
                         style: TextStyle(fontSize: 24, color: Colors.white)),
                   ),
                 );
