@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'graphs.dart';
+import 'summaryPage.dart';
 
 class TabBarDemo extends StatelessWidget {
   String name;
@@ -28,7 +29,7 @@ class TabBarDemo extends StatelessWidget {
           ),
           body: TabBarView(
             children: [
-              GraphPage(),
+              SummaryPage(),
               GraphPage(),
             ],
           ),
