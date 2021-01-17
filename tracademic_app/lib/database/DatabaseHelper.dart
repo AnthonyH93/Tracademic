@@ -107,4 +107,35 @@ class DatabaseHelper {
     return await db
         .delete(coursesTable, where: '$courseIdentifier = ?', whereArgs: [id]);
   }
+
+  // Helper methods for gradesTable
+
+  Future<int> insertGrades(Map<String, dynamic> row) async {
+    Database db = await instance.database;
+    return await db.insert(coursesTable, row);
+  }
+
+  Future<List<Map<String, dynamic>>> queryAllRowsGrades() async {
+    Database db = await instance.database;
+    return await db.query(coursesTable);
+  }
+
+  Future<int> queryRowCountGrades() async {
+    Database db = await instance.database;
+    return Sqflite.firstIntValue(
+        await db.rawQuery('SELECT COUNT(*) FROM $gradesTable'));
+  }
+
+  Future<int> updateGrades(Map<String, dynamic> row) async {
+    Database db = await instance.database;
+    int id = row[courseIdentifier];
+    return await db.update(coursesTable, row,
+        where: '$gradeIdentifier = ?', whereArgs: [id]);
+  }
+
+  Future<int> deleteGrades(int id) async {
+    Database db = await instance.database;
+    return await db
+        .delete(coursesTable, where: '$gradeIdentifier = ?', whereArgs: [id]);
+  }
 }
