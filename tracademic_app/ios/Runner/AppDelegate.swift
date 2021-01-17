@@ -10,6 +10,7 @@ import Firebase
   ) -> Bool {
     GeneratedPluginRegistrant.register(with: self)
     FirebaseApp.configure()
+    let storage = Storage.storage()
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 }
