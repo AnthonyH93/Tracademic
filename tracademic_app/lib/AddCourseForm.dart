@@ -76,7 +76,7 @@ class AddCourseFormState extends State<AddCourseFormWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(50),
+            padding: EdgeInsets.all(30),
             child: ElevatedButton(
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(
@@ -90,6 +90,7 @@ class AddCourseFormState extends State<AddCourseFormWidget> {
                 if (_formKey.currentState.validate()) {
                   // If the form is valid, enter data into the database
                   String newCourseName = textFieldController.text;
+                  insertCourse(newCourseName);
                 }
               },
               child: Text('Add Course'),
@@ -98,5 +99,15 @@ class AddCourseFormState extends State<AddCourseFormWidget> {
         ],
       ),
     );
+  }
+  // Button onPressed methods
+
+  void insertCourse(String name) async {
+    // row to insert
+    Map<String, dynamic> row = {
+      DatabaseHelper.courseName: name,
+    };
+    final id = await dbHelper.insert(row);
+    print('inserted row id: $id');
   }
 }
