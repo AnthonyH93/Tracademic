@@ -8,16 +8,19 @@ class CoursesPage extends StatefulWidget {
 
 class _CoursesPageState extends State<CoursesPage> {
   @override
-  final List<String> courses = <String>['ECE 201', 'ECE 203', 'ECE 207', 'ECE 208', 'ECE 224', 'ECE 252', 'SCI 238', 'ECE 222', 'ECE 222', 'ECE 222', 'ECE 222', 'ECE 222'];
+  final List<String> courses = <String>['ECE 201', 'ECE 203', 'ECE 207', 'ECE 208', 'ECE 224', 'ECE 252', 'SCI 238', 'ECE 222', 'ECE 222', 'ECE 222'];
   Widget build(BuildContext context) {
     Widget averageSection = Container(
-      margin: const EdgeInsets.all(10.0),
-      color: Colors.amber[600],
-      height: 200,
+      height: 215,
+      child: Column(
+        children: <Widget>[
+          Text("Overall Average", style: TextStyle(fontSize: 24, color: Colors.white)),
+          Text("75", style: TextStyle(fontSize: 80))
+        ]
+      ),
     );
     Widget coursesSection = Container(
       child: ListView.builder(
-        shrinkWrap: true,
         itemCount: courses.length,
         itemBuilder: (BuildContext context, int index) {
           return Container(
@@ -31,7 +34,8 @@ class _CoursesPageState extends State<CoursesPage> {
       body: Column(
         children: <Widget>[
           averageSection,
-          coursesSection
+          Text("Courses", style: TextStyle(fontSize: 24, color: Colors.white)),
+          new Expanded(child: coursesSection)
         ],
       ),
       bottomNavigationBar: BottomAppBar(
