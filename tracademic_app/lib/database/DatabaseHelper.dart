@@ -21,7 +21,7 @@ class DatabaseHelper {
   //Grades_table columns
   static final gradeIdentifier = '_id';
   static final relatedCourseId = 'relatedCourseId';
-  //1=quiz, 2=assignment, 3=lab, 4=exam
+  //0:Quiz, 1:Exam, 2:Lab, 3:Assignment
   static final gradeCategory = 'gradeCategory';
   static final numericalGrade = 'numericalGrade';
   static final courseWeight = 'courseWeight';
@@ -61,7 +61,8 @@ class DatabaseHelper {
             $gradeIdentifier INTEGER PRIMARY KEY,
             $relatedCourseId INTEGER NOT NULL,
             $gradeCategory INTEGER NOT NULL,
-            $numericalGrade INTEGER NOT NULL
+            $numericalGrade INTEGER NOT NULL,
+            $courseWeight INTEGER NOT NULL
           )
           ''');
   }
@@ -112,7 +113,7 @@ class DatabaseHelper {
 
   Future<int> insertGrades(Map<String, dynamic> row) async {
     Database db = await instance.database;
-    return await db.insert(coursesTable, row);
+    return await db.insert(gradesTable, row);
   }
 
   Future<List<Map<String, dynamic>>> queryAllRowsGrades() async {

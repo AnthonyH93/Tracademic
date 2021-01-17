@@ -5,6 +5,8 @@ import 'package:tracademic_app/graphs.dart';
 import 'coursePage.dart';
 import 'database/DatabaseHelper.dart';
 
+int course_index;
+
 class MyAddGradeForm extends StatelessWidget {
   // reference to our single class that manages the database
   final dbHelper = DatabaseHelper.instance;
@@ -17,6 +19,7 @@ class MyAddGradeForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    course_index = course_idx;
     print(course_nme);
     print(course_idx);
 
@@ -28,7 +31,7 @@ class MyAddGradeForm extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Color.fromRGBO(54, 66, 97, 100),
           title: Center(
-            child: Text('Add a new grade:'),
+            child: Text('Add New Grade'),
           ),
         ),
         body: Padding(
@@ -73,6 +76,10 @@ class _AddGradeFormState extends State<AddGradeForm> {
                   padding:
                       EdgeInsets.only(top: 70, bottom: 30, left: 10, right: 10),
                   child: TextFormField(
+                    keyboardType: TextInputType.number,
+                    inputFormatters: <TextInputFormatter>[
+                      FilteringTextInputFormatter.digitsOnly
+                    ],
                     controller: controller1,
                     style: TextStyle(color: Colors.black),
                     decoration: InputDecoration(
@@ -85,7 +92,7 @@ class _AddGradeFormState extends State<AddGradeForm> {
                           borderRadius: BorderRadius.circular(20)),
                     ),
                     validator: (value) {
-                      if (value.isEmpty) {
+                      if (value.isEmpty || (int.parse(value) > 100)) {
                         return 'Please enter a valid grade';
                       }
                       return null;
@@ -96,6 +103,10 @@ class _AddGradeFormState extends State<AddGradeForm> {
                 Padding(
                   padding: EdgeInsets.all(10),
                   child: TextFormField(
+                    keyboardType: TextInputType.number,
+                    inputFormatters: <TextInputFormatter>[
+                      FilteringTextInputFormatter.digitsOnly
+                    ],
                     controller: controller2,
                     style: TextStyle(color: Colors.black),
                     decoration: InputDecoration(
@@ -107,7 +118,7 @@ class _AddGradeFormState extends State<AddGradeForm> {
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20))),
                     validator: (value) {
-                      if (value.isEmpty) {
+                      if (value.isEmpty || (int.parse(value) > 100)) {
                         return 'Please enter a valid weight';
                       }
                       return null;
@@ -154,8 +165,18 @@ class _AddGradeFormState extends State<AddGradeForm> {
                         //connect to firebase and validate user
                         print(controller1.text);
                         print(controller2.text);
-                        //Navigate to TermPage
                         print(options.indexOf(dropdownValue));
+
+                        //Add grade in database
+                        int category = options.indexOf(dropdownValue);
+                        int gradeValue = int.parse(controller1.text);
+                        int gradeWeight = int.parse(controller2.text);
+                        int courseRelated = course_index;
+
+                        insertGrade(
+                            gradeValue, gradeWeight, category, courseRelated);
+
+                        //Navigate to TermPage
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
@@ -172,5 +193,19 @@ class _AddGradeFormState extends State<AddGradeForm> {
             )
           ],
         ));
+  }
+
+  // Button onPressed methods
+  void insertGrade(
+      int grade, int weight, int category, int courseRelated) async {
+    // row to insert
+    Map<String, dynamic> row = {
+      DatabaseHelper.relatedCourseId: courseRelated,
+      DatabaseHelper.numericalGrade: grade,
+      DatabaseHelper.courseWeight: weight,
+      DatabaseHelper.gradeCategory: category
+    };
+    final id = await dbHelper.insertGrades(row);
+    print('inserted row id: $id');
   }
 }
