@@ -42,9 +42,9 @@ class DatabaseHelper {
     await db.execute('''
           CREATE TABLE $table (
             $courseIdentifier INTEGER PRIMARY KEY,
-            $termIdentifier INTEGER NOT NULL,
+            $termIdentifier INTEGER,
             $courseName STRING NOT NULL,
-            $courseGrade INTEGER NOT NULL
+            $courseGrade INTEGER
           )
           ''');
   }
