@@ -64,6 +64,10 @@ class _AddGradeFormState extends State<AddGradeForm> {
                   padding:
                       EdgeInsets.only(top: 70, bottom: 30, left: 10, right: 10),
                   child: TextFormField(
+                    keyboardType: TextInputType.number,
+                    inputFormatters: <TextInputFormatter>[
+                      FilteringTextInputFormatter.digitsOnly
+                    ],
                     controller: controller1,
                     style: TextStyle(color: Colors.black),
                     decoration: InputDecoration(
@@ -87,6 +91,10 @@ class _AddGradeFormState extends State<AddGradeForm> {
                 Padding(
                   padding: EdgeInsets.all(10),
                   child: TextFormField(
+                    keyboardType: TextInputType.number,
+                    inputFormatters: <TextInputFormatter>[
+                      FilteringTextInputFormatter.digitsOnly
+                    ],
                     controller: controller2,
                     style: TextStyle(color: Colors.black),
                     decoration: InputDecoration(
