@@ -29,8 +29,10 @@ class _LoginPageState extends State<LoginPage> {
                   padding:
                       EdgeInsets.only(top: 70, bottom: 30, left: 10, right: 10),
                   child: TextFormField(
+                    style: TextStyle(color: Colors.black),
                     decoration: InputDecoration(
                       hintText: 'Username',
+                      hintStyle: TextStyle(color: Colors.black),
                       filled: true,
                       fillColor: Colors.white,
                       contentPadding: EdgeInsets.all(10),
@@ -49,8 +51,10 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: EdgeInsets.all(10),
                   child: TextFormField(
+                    style: TextStyle(color: Colors.black),
                     decoration: InputDecoration(
                         hintText: 'Password',
+                        hintStyle: TextStyle(color: Colors.black),
                         filled: true,
                         fillColor: Colors.white,
                         contentPadding: EdgeInsets.all(10),
