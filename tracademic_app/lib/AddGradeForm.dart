@@ -19,7 +19,7 @@ class MyAddGradeForm extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Color.fromRGBO(54, 66, 97, 100),
           title: Center(
-            child: Text('Add a new grade:'),
+            child: Text('Add New Grade'),
           ),
         ),
         body: Padding(
@@ -146,6 +146,9 @@ class _AddGradeFormState extends State<AddGradeForm> {
                         //connect to firebase and validate user
                         print(controller1.text);
                         print(controller2.text);
+
+                        //Add course in database
+
                         //Navigate to TermPage
                         Navigator.pushReplacement(
                             context,
@@ -163,5 +166,16 @@ class _AddGradeFormState extends State<AddGradeForm> {
             )
           ],
         ));
+  }
+
+  // Button onPressed methods
+  void insertGrade(String name) async {
+    // row to insert
+    Map<String, dynamic> row = {
+      DatabaseHelper.courseName: name,
+      DatabaseHelper.courseGrade: 0
+    };
+    final id = await dbHelper.insertCourses(row);
+    print('inserted row id: $id');
   }
 }
