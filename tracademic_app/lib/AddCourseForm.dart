@@ -104,8 +104,8 @@ class AddCourseFormState extends State<AddCourseFormWidget> {
       ),
     );
   }
-  // Button onPressed methods
 
+  // Button onPressed methods
   void insertCourse(String name) async {
     // row to insert
     Map<String, dynamic> row = {
