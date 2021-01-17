@@ -21,7 +21,7 @@ class DatabaseHelper {
   //Grades_table columns
   static final gradeIdentifier = '_id';
   static final relatedCourseId = 'relatedCourseId';
-  //1=quiz, 2=assignment, 3=lab, 4=exam
+  //0:Quiz, 1:Exam, 2:Lab, 3:Assignment
   static final gradeCategory = 'gradeCategory';
   static final numericalGrade = 'numericalGrade';
   static final courseWeight = 'courseWeight';

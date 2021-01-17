@@ -153,11 +153,18 @@ class _AddGradeFormState extends State<AddGradeForm> {
                         //connect to firebase and validate user
                         print(controller1.text);
                         print(controller2.text);
+                        print(options.indexOf(dropdownValue));
 
-                        //Add course in database
+                        //Add grade in database
+                        int category = options.indexOf(dropdownValue);
+                        int gradeValue = int.parse(controller1.text);
+                        int gradeWeight = int.parse(controller2.text);
+                        int courseRelated = 0;
+
+                        insertGrade(
+                            gradeValue, gradeWeight, category, courseRelated);
 
                         //Navigate to TermPage
-                        print(options.indexOf(dropdownValue));
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
@@ -177,13 +184,16 @@ class _AddGradeFormState extends State<AddGradeForm> {
   }
 
   // Button onPressed methods
-  void insertGrade(String name) async {
+  void insertGrade(
+      int grade, int weight, int category, int courseRelated) async {
     // row to insert
     Map<String, dynamic> row = {
-      DatabaseHelper.courseName: name,
-      DatabaseHelper.courseGrade: 0
+      DatabaseHelper.relatedCourseId: courseRelated,
+      DatabaseHelper.numericalGrade: grade,
+      DatabaseHelper.courseWeight: weight,
+      DatabaseHelper.gradeCategory: category
     };
-    final id = await dbHelper.insertCourses(row);
+    final id = await dbHelper.insertGrades(row);
     print('inserted row id: $id');
   }
 }
