@@ -9,12 +9,22 @@ class DatabaseHelper {
   static final _databaseName = "CoursesDatabase.db";
   static final _databaseVersion = 1;
 
-  static final table = 'courses_table';
+  //Database tables
+  static final coursesTable = 'courses_table';
+  static final gradesTable = 'grades_table';
 
+  //Courses_table columns
   static final courseIdentifier = '_id';
-  static final termIdentifier = 'termId';
   static final courseName = 'courseName';
   static final courseGrade = 'courseGrade';
+
+  //Grades_table columns
+  static final gradeIdentifier = '_id';
+  static final relatedCourseId = 'relatedCourseId';
+  //1=quiz, 2=assignment, 3=lab, 4=exam
+  static final gradeCategory = 'gradeCategory';
+  static final numericalGrade = 'numericalGrade';
+  static final courseWeight = 'courseWeight';
 
   // make this a singleton class
   DatabaseHelper._privateConstructor();
@@ -40,54 +50,92 @@ class DatabaseHelper {
   // SQL code to create the database table
   Future _onCreate(Database db, int version) async {
     await db.execute('''
-          CREATE TABLE $table (
+          CREATE TABLE $coursesTable (
             $courseIdentifier INTEGER PRIMARY KEY,
-            $termIdentifier INTEGER,
             $courseName STRING NOT NULL,
             $courseGrade INTEGER
           )
           ''');
+    await db.execute('''
+          CREATE TABLE $gradesTable (
+            $gradeIdentifier INTEGER PRIMARY KEY,
+            $relatedCourseId INTEGER NOT NULL,
+            $gradeCategory INTEGER NOT NULL,
+            $numericalGrade INTEGER NOT NULL
+          )
+          ''');
   }
 
-  // Helper methods
+  // Helper methods for coursesTable
 
   // Inserts a row in the database where each key in the Map is a column name
   // and the value is the column value. The return value is the id of the
   // inserted row.
-  Future<int> insert(Map<String, dynamic> row) async {
+  Future<int> insertCourses(Map<String, dynamic> row) async {
     Database db = await instance.database;
-    return await db.insert(table, row);
+    return await db.insert(coursesTable, row);
   }
 
   // All of the rows are returned as a list of maps, where each map is
   // a key-value list of columns.
-  Future<List<Map<String, dynamic>>> queryAllRows() async {
+  Future<List<Map<String, dynamic>>> queryAllRowsCourses() async {
     Database db = await instance.database;
-    return await db.query(table);
+    return await db.query(coursesTable);
   }
 
   // All of the methods (insert, query, update, delete) can also be done using
   // raw SQL commands. This method uses a raw query to give the row count.
-  Future<int> queryRowCount() async {
+  Future<int> queryRowCountCourses() async {
     Database db = await instance.database;
     return Sqflite.firstIntValue(
-        await db.rawQuery('SELECT COUNT(*) FROM $table'));
+        await db.rawQuery('SELECT COUNT(*) FROM $coursesTable'));
   }
 
   // We are assuming here that the id column in the map is set. The other
   // column values will be used to update the row.
-  Future<int> update(Map<String, dynamic> row) async {
+  Future<int> updateCourses(Map<String, dynamic> row) async {
     Database db = await instance.database;
     int id = row[courseIdentifier];
-    return await db
-        .update(table, row, where: '$courseIdentifier = ?', whereArgs: [id]);
+    return await db.update(coursesTable, row,
+        where: '$courseIdentifier = ?', whereArgs: [id]);
   }
 
   // Deletes the row specified by the id. The number of affected rows is
   // returned. This should be 1 as long as the row exists.
-  Future<int> delete(int id) async {
+  Future<int> deleteCourses(int id) async {
     Database db = await instance.database;
     return await db
-        .delete(table, where: '$courseIdentifier = ?', whereArgs: [id]);
+        .delete(coursesTable, where: '$courseIdentifier = ?', whereArgs: [id]);
+  }
+
+  // Helper methods for gradesTable
+
+  Future<int> insertGrades(Map<String, dynamic> row) async {
+    Database db = await instance.database;
+    return await db.insert(coursesTable, row);
+  }
+
+  Future<List<Map<String, dynamic>>> queryAllRowsGrades() async {
+    Database db = await instance.database;
+    return await db.query(coursesTable);
+  }
+
+  Future<int> queryRowCountGrades() async {
+    Database db = await instance.database;
+    return Sqflite.firstIntValue(
+        await db.rawQuery('SELECT COUNT(*) FROM $gradesTable'));
+  }
+
+  Future<int> updateGrades(Map<String, dynamic> row) async {
+    Database db = await instance.database;
+    int id = row[courseIdentifier];
+    return await db.update(coursesTable, row,
+        where: '$gradeIdentifier = ?', whereArgs: [id]);
+  }
+
+  Future<int> deleteGrades(int id) async {
+    Database db = await instance.database;
+    return await db
+        .delete(coursesTable, where: '$gradeIdentifier = ?', whereArgs: [id]);
   }
 }
