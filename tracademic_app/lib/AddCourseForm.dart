@@ -93,7 +93,7 @@ class AddCourseFormState extends State<AddCourseFormWidget> {
                   insertCourse(newCourseName);
 
                   //Navigate back to Courses
-                  Navigator.pop(context,
+                  Navigator.pushReplacement(context,
                       MaterialPageRoute(builder: (context) => OverviewPage()));
                 }
               },

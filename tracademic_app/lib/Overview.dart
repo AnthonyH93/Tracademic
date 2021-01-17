@@ -22,7 +22,7 @@ class _OverviewPageState extends State<OverviewPage> {
   Widget build(BuildContext context) => FutureBuilder(
       future: getAllCourses(),
       builder: (context, snapshot) {
-        if (snapshot.hasData) {
+        if (snapshot.hasData && (courses.length > 0)) {
           num average = 0;
           for (var i = 0; i < courses.length; i++) {
             average += grades[i];
@@ -78,7 +78,6 @@ class _OverviewPageState extends State<OverviewPage> {
             ),
             floatingActionButton: RaisedButton(
               onPressed: () => setState(() {
-                print("Button pressed");
                 //Navigate to AddCourseForm
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => AddCourseForm()));
@@ -92,14 +91,46 @@ class _OverviewPageState extends State<OverviewPage> {
           );
         } else {
           //Wait
-          print("here");
-          return Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [Text("Loading")],
-            ),
-          );
+          return MaterialApp(
+              title: 'Courses Overview',
+              home: Scaffold(
+                backgroundColor: Color.fromRGBO(54, 66, 97, 100),
+                appBar: AppBar(
+                  backgroundColor: Color.fromRGBO(54, 66, 97, 100),
+                  title: const Text("Courses Overview"),
+                ),
+                body: Column(
+                  children: <Widget>[
+                    new Container(height: 10),
+                    Padding(
+                        padding: EdgeInsets.symmetric(vertical: 8.0),
+                        child: Text("Courses",
+                            style:
+                                TextStyle(fontSize: 24, color: Colors.white))),
+                  ],
+                ),
+                bottomNavigationBar: BottomAppBar(
+                  child: Container(
+                    color: Color.fromRGBO(54, 66, 97, 100),
+                    height: 50.0,
+                  ),
+                ),
+                floatingActionButton: RaisedButton(
+                  onPressed: () => setState(() {
+                    print("Button pressed");
+                    //Navigate to AddCourseForm
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => AddCourseForm()));
+                  }),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Text("Add Course"),
+                ),
+                floatingActionButtonLocation:
+                    FloatingActionButtonLocation.centerDocked,
+              ));
         }
       });
 
@@ -107,7 +138,8 @@ class _OverviewPageState extends State<OverviewPage> {
     int courseCount = await dbHelper.queryRowCountCourses();
 
     if (courseCount == 0) {
-      courses = null;
+      courses = [];
+      return false;
     } else {
       List<Map<String, dynamic>> allCourses =
           await dbHelper.queryAllRowsCourses();
@@ -117,7 +149,7 @@ class _OverviewPageState extends State<OverviewPage> {
       courses = array;
       allCourses.forEach((row) => array2.add(row[DatabaseHelper.courseGrade]));
       grades = array2;
+      return true;
     }
-    return true;
   }
 }
