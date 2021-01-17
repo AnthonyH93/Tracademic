@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'database/DatabaseHelper.dart';
 import 'graphs.dart';
+import 'summaryPage.dart';
 
 class TabBarDemo extends StatelessWidget {
 
@@ -32,7 +33,7 @@ class TabBarDemo extends StatelessWidget {
           ),
           body: TabBarView(
             children: [
-              GraphPage(),
+              SummaryOuterPage(),
               GraphPage(),
             ],
           ),

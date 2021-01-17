@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tracademic_app/Courses.dart';
 import 'database/DatabaseHelper.dart';
 import 'graphs.dart';
 
