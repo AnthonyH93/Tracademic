@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         ),
         body: Padding(
           padding: EdgeInsets.fromLTRB(40, 50, 40, 0),
-          child: CoursesPage(),
+          child: LoginPage(),
         ),
       ),
     );
