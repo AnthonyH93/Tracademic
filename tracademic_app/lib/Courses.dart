@@ -9,6 +9,7 @@ class CoursesPage extends StatefulWidget {
 class _CoursesPageState extends State<CoursesPage> {
   @override
   final List<String> courses = <String>['ECE 201', 'ECE 203', 'ECE 207', 'ECE 208', 'ECE 224', 'ECE 252', 'SCI 238', 'ECE 222', 'ECE 222', 'ECE 222'];
+  final List<String> courses_grades = <String>['67', '78', '72', '85', '91', '87', '00', '00', '00', '00'];
   Widget build(BuildContext context) {
     Widget averageSection = Container(
       height: 215,
@@ -20,14 +21,20 @@ class _CoursesPageState extends State<CoursesPage> {
       ),
     );
     Widget coursesSection = Container(
-      child: ListView.builder(
+      child: ListView.separated(
         itemCount: courses.length,
         itemBuilder: (BuildContext context, int index) {
-          return Container(
-              height: 40,
-              child: Text('${courses[index]}')
+          return InkWell(
+            onTap: () {
+              print('${courses[index]}');
+            },
+            child: ListTile(
+              title: Text('${courses[index]}'),
+              trailing: Text('${courses_grades[index]}'),
+            ),
           );
         },
+        separatorBuilder: (BuildContext context, int index) => const Divider(),
       ),
     );
     return new Scaffold(
