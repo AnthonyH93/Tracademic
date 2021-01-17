@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'TermPage.dart';
 
 class LoginPage extends StatefulWidget {
   //create the login page state class
@@ -77,8 +78,12 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
                         //connect to firebase and validate user
-                        Scaffold.of(context).showSnackBar(
-                            SnackBar(content: Text('Logging in ...')));
+
+                        //Navigate to TermPage
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => TermPage()));
                       }
                     },
                     child: Text(
