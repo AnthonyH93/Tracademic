@@ -38,19 +38,6 @@ const weeks = [
   'W4',
 ];
 
-// const gradeIncrements = [
-//   '10%',
-//   '20%',
-//   '30%',
-//   '40%',
-//   '50%',
-//   '60%',
-//   '70%',
-//   '80%',
-//   '90%',
-//   '100%'
-// ];
-
 const gradeIncrements = ['20%', '40%', '60%', '80%', '100%'];
 
 final List<Feature> features = [
