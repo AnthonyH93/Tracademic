@@ -1,6 +1,22 @@
 import 'package:flutter/material.dart';
 import 'constants.dart' as Constants;
 
+class SummaryOuterPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        backgroundColor: Colors.blueGrey[50],
+        body: Padding(
+          padding: EdgeInsets.fromLTRB(40, 50, 40, 0),
+          child: SummaryPage(),
+        ),
+      ),
+    );
+  }
+}
+
 class SummaryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

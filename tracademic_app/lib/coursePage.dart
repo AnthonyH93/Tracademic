@@ -29,7 +29,7 @@ class TabBarDemo extends StatelessWidget {
           ),
           body: TabBarView(
             children: [
-              SummaryPage(),
+              SummaryOuterPage(),
               GraphPage(),
             ],
           ),
