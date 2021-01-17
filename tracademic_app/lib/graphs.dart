@@ -10,15 +10,8 @@ class GraphPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: darkBlue),
       home: Scaffold(
-        backgroundColor: Color.fromRGBO(54, 66, 97, 100),
-        appBar: AppBar(
-          backgroundColor: Color.fromRGBO(54, 66, 97, 100),
-          title: Center(
-            child: Text('ECE 252'),
-          ),
-        ),
+        backgroundColor: Colors.blueGrey[50],
         body: Padding(
           padding: EdgeInsets.fromLTRB(40, 50, 40, 0),
           child: Graphs(),
@@ -49,10 +42,10 @@ class _GraphsState extends State<Graphs> {
           labelX: Constants.weeks,
           labelY: Constants.gradeIncrements,
           showDescription: true,
-          graphColor: Colors.white30,
+          graphColor: Colors.black,
         ),
         SizedBox(
-          height: 20,
+          height: 100,
         )
       ],
     );

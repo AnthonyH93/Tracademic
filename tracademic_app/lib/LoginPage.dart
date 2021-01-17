@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'graphs.dart';
+import 'tabBar.dart';
 
 class LoginPage extends StatefulWidget {
   //create the login page state class
@@ -102,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) {
-                          return GraphPage();
+                          return TabBarDemo();
                         }),
                       );
                     },
