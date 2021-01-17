@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tracademic_app/AddCourseForm.dart';
+import 'coursePage.dart';
 import 'constants.dart' as Constants;
 
 class CoursesPage extends StatefulWidget {
@@ -31,7 +32,8 @@ class _CoursesPageState extends State<CoursesPage> {
         itemBuilder: (BuildContext context, int index) {
           return InkWell(
             onTap: () {
-              print('${Constants.courses_courses[index]}');
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => TabBarDemo(Constants.courses_courses[index], index)));
             },
             child: ListTile(
               title: Text('${Constants.courses_courses[index]}'),

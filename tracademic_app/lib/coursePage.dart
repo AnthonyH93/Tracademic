@@ -9,7 +9,8 @@ class TabBarDemo extends StatelessWidget {
   final dbHelper = DatabaseHelper.instance;
   
   String name;
-  TabBarDemo(this.name) {
+  int index;
+  TabBarDemo(this.name, this.index) {
     name = this.name;
   }
   @override
