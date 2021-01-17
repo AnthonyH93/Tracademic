@@ -35,7 +35,7 @@ class SummaryPage extends StatelessWidget {
           height: 100,
           alignment: Alignment.center,
           child: Text(
-            'Current Grades:',
+            'Current Grades',
             style: TextStyle(
                 fontSize: 40,
                 color: Colors.blue[900],
@@ -73,7 +73,7 @@ class SummaryPage extends StatelessWidget {
           height: 100,
           alignment: Alignment.centerLeft,
           child: Text(
-            'Tests:' + '  90',
+            'Exams:' + '  90',
             style: TextStyle(
                 fontSize: 30, color: Colors.black, fontWeight: FontWeight.bold),
           ),
