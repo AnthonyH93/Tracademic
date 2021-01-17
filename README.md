@@ -1,2 +1,3 @@
 # Tracademic
-Private property, doughnut steel
+
+Repository for Team SegFault competing at HackTheNorth2020++.
