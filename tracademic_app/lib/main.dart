@@ -3,7 +3,11 @@ import 'graphs.dart';
 
 import 'LoginPage.dart';
 
-void main() {
+import 'database/databaseFunctions.dart';
+
+void main() async {
+  //WidgetsFlutterBinding.ensureInitialized();
+
   runApp(Nav2App());
 }
 
