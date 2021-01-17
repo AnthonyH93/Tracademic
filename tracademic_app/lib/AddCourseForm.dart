@@ -69,14 +69,14 @@ class AddCourseFormState extends State<AddCourseFormWidget> {
                       borderRadius: BorderRadius.circular(20))),
               validator: (value) {
                 if (value.isEmpty) {
-                  return 'Please enter some a course name';
+                  return 'Please enter a course name';
                 }
                 return null;
               },
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(30),
+            padding: EdgeInsets.all(20),
             child: ElevatedButton(
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(
