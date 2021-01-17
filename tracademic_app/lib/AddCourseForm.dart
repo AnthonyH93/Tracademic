@@ -52,7 +52,7 @@ class AddCourseFormState extends State<AddCourseFormWidget> {
     return Form(
       key: _formKey,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 10, top: 30),
