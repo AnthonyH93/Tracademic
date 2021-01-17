@@ -12,7 +12,6 @@ class DatabaseHelper {
   static final table = 'courses_table';
 
   static final courseIdentifier = '_id';
-  static final termIdentifier = 'termId';
   static final courseName = 'courseName';
   static final courseGrade = 'courseGrade';
 
@@ -42,7 +41,6 @@ class DatabaseHelper {
     await db.execute('''
           CREATE TABLE $table (
             $courseIdentifier INTEGER PRIMARY KEY,
-            $termIdentifier INTEGER,
             $courseName STRING NOT NULL,
             $courseGrade INTEGER
           )
