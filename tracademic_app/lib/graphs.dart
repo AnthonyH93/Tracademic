@@ -16,7 +16,7 @@ class GraphPage extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Color.fromRGBO(54, 66, 97, 100),
           title: Center(
-            child: Text(''),
+            child: Text('ECE 252'),
           ),
         ),
         body: Padding(
@@ -43,20 +43,9 @@ class _GraphsState extends State<Graphs> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         Container(),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 64.0),
-          child: Text(
-            "ECE 252",
-            style: TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 2,
-            ),
-          ),
-        ),
         LineGraph(
           features: Constants.features,
-          size: Size(500, 450),
+          size: Size(600, 450),
           labelX: Constants.weeks,
           labelY: Constants.gradeIncrements,
           showDescription: true,
