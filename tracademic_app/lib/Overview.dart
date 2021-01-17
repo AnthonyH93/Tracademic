@@ -25,10 +25,12 @@ class _OverviewPageState extends State<OverviewPage> {
         if (snapshot.hasData) {
           num average = 0;
           for (var i = 0; i < courses.length; i++) {
-            //average += grades[i];
+            average += grades[i];
           }
           print(courses.length);
-          average /= courses.length;
+          if (!(courses.length == 0)) {
+            average /= courses.length;
+          }
           int rounded_average = average.toInt();
           Widget averageSection = Container(
             height: 215,
