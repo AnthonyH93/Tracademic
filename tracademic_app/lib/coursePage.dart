@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tracademic_app/AddGradeForm.dart';
 
 import 'database/DatabaseHelper.dart';
 import 'graphs.dart';
@@ -48,12 +49,15 @@ class TabBarDemo extends StatelessWidget {
           ),
           floatingActionButton: RaisedButton(
             onPressed: () {
-              print("Button pressed");
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => MyAddGradeForm()));
             },
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-            child: Text("Add Course"),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            child: Text("Add new grade"),
           ),
-          floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerDocked,
         ),
       ),
     );
