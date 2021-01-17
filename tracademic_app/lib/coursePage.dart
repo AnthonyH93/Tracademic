@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tracademic_app/AddGradeForm.dart';
 
 import 'database/DatabaseHelper.dart';
 import 'graphs.dart';
@@ -11,6 +12,7 @@ class TabBarDemo extends StatelessWidget {
   int index;
   TabBarDemo(this.name, this.index) {
     name = this.name;
+    index = this.index;
   }
   @override
   Widget build(BuildContext context) {
@@ -39,6 +41,23 @@ class TabBarDemo extends StatelessWidget {
               GraphPage(),
             ],
           ),
+          bottomNavigationBar: BottomAppBar(
+            child: Container(
+              color: Color.fromRGBO(54, 66, 97, 100),
+              height: 50.0,
+            ),
+          ),
+          floatingActionButton: RaisedButton(
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => MyAddGradeForm()));
+            },
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            child: Text("Add new grade"),
+          ),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerDocked,
         ),
       ),
     );

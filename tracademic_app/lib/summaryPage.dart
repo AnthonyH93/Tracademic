@@ -10,7 +10,7 @@ class SummaryOuterPage extends StatelessWidget {
         backgroundColor: Colors.blueGrey[50],
         // backgroundColor: Color.fromRGBO(54, 66, 97, 100),
         body: Padding(
-          padding: EdgeInsets.fromLTRB(40, 50, 40, 0),
+          padding: EdgeInsets.fromLTRB(40, 0, 40, 0),
           child: SummaryPage(),
         ),
       ),
@@ -21,7 +21,7 @@ class SummaryOuterPage extends StatelessWidget {
 class SummaryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return ListView(
       children: <Widget>[
         Container(
           height: 20,
