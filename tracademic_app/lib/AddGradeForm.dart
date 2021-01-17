@@ -5,6 +5,8 @@ import 'package:tracademic_app/graphs.dart';
 import 'coursePage.dart';
 import 'database/DatabaseHelper.dart';
 
+int course_index;
+
 class MyAddGradeForm extends StatelessWidget {
   // reference to our single class that manages the database
   final dbHelper = DatabaseHelper.instance;
@@ -17,6 +19,7 @@ class MyAddGradeForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    course_index = course_idx;
     print(course_nme);
     print(course_idx);
 
@@ -168,7 +171,7 @@ class _AddGradeFormState extends State<AddGradeForm> {
                         int category = options.indexOf(dropdownValue);
                         int gradeValue = int.parse(controller1.text);
                         int gradeWeight = int.parse(controller2.text);
-                        int courseRelated = 0;
+                        int courseRelated = course_index;
 
                         insertGrade(
                             gradeValue, gradeWeight, category, courseRelated);
