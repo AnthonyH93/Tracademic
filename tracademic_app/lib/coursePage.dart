@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'graphs.dart';
 
 class TabBarDemo extends StatelessWidget {
+  String name;
+  TabBarDemo(this.name) {
+    name = this.name;
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,7 +24,7 @@ class TabBarDemo extends StatelessWidget {
                 Tab(text: 'Graph'),
               ],
             ),
-            title: Text('ECE 252'),
+            title: Text(name),
           ),
           body: TabBarView(
             children: [

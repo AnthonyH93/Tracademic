@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+import 'coursePage.dart';
 
 class TermPage extends StatefulWidget {
   @override
@@ -17,8 +17,8 @@ class _TermPageState extends State<TermPage> {
         child: ElevatedButton(
           onPressed: () {
             // Navigate back to first route when tapped.
-            Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (context) => MyApp()));
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => TabBarDemo('ECE 252')));
           },
           child: Text('Logout'),
         ),
