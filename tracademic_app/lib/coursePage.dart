@@ -5,9 +5,8 @@ import 'graphs.dart';
 import 'summaryPage.dart';
 
 class TabBarDemo extends StatelessWidget {
-
   final dbHelper = DatabaseHelper.instance;
-  
+
   String name;
   int index;
   TabBarDemo(this.name, this.index) {
@@ -16,12 +15,14 @@ class TabBarDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: darkBlue),
       home: DefaultTabController(
         length: 2,
         child: Scaffold(
           appBar: AppBar(
+            backgroundColor: Color.fromRGBO(54, 66, 97, 100),
             // backgroundColor: Color.fromARGB(255, 18, 32, 47),
-            backgroundColor: Colors.blue[800],
+            // backgroundColor: Colors.blue[800],
             bottom: TabBar(
               tabs: [
                 // Tab(icon: Icon(Icons.directions_car)),
