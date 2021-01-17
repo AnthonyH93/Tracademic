@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'coursePage.dart';
+import 'database/DatabaseHelper.dart';
 
 class TermPage extends StatefulWidget {
   @override
@@ -7,6 +8,9 @@ class TermPage extends StatefulWidget {
 }
 
 class _TermPageState extends State<TermPage> {
+
+  final dbHelper = DatabaseHelper.instance;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
