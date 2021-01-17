@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
+import 'database/DatabaseHelper.dart';
 import 'graphs.dart';
 
 class TabBarDemo extends StatelessWidget {
+
+  final dbHelper = DatabaseHelper.instance;
+  
   String name;
   TabBarDemo(this.name) {
     name = this.name;

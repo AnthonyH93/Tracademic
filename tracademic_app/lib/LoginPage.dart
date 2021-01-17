@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tracademic_app/database/DatabaseHelper.dart';
 import 'TermPage.dart';
 
 class LoginPage extends StatefulWidget {
@@ -11,6 +12,7 @@ class _LoginPageState extends State<LoginPage> {
   //TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
 
   final _formKey = GlobalKey<FormState>();
+  final dbHelper = DatabaseHelper.instance;
 
   @override
   Widget build(BuildContext context) {
