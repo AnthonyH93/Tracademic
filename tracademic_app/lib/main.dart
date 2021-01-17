@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tracademic_app/Courses.dart';
 import 'database/DatabaseHelper.dart';
 import 'graphs.dart';
 
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
         ),
         body: Padding(
           padding: EdgeInsets.fromLTRB(40, 50, 40, 0),
-          child: LoginPage(),
+          child: CoursesPage(),
         ),
       ),
     );
