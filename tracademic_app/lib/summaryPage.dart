@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'constants.dart' as Constants;
 import 'database/DatabaseHelper.dart';
 
-class SummaryOuterPage extends StatelessWidget {
+class SummaryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,7 +19,7 @@ class SummaryOuterPage extends StatelessWidget {
   }
 }
 
-class SummaryPage extends StatelessWidget {
+class SummaryWidget extends StatelessWidget {
   final dbHelper = DatabaseHelper.instance;
 
   @override
