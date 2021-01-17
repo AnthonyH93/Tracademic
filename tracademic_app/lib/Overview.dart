@@ -50,8 +50,10 @@ class _OverviewPageState extends State<OverviewPage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) =>
-                                TabBarDemo(courses[index], index)));
+                            builder: (context) => TabBarDemo(
+                                  course_index: index,
+                                  course_name: courses[index],
+                                )));
                   },
                   child: ListTile(
                     title: Text('${courses[index]}',

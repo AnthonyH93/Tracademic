@@ -8,9 +8,18 @@ import 'database/DatabaseHelper.dart';
 class MyAddGradeForm extends StatelessWidget {
   // reference to our single class that manages the database
   final dbHelper = DatabaseHelper.instance;
+  final int course_idx;
+  final String course_nme;
+
+  MyAddGradeForm(
+      {Key key, @required this.course_idx, @required this.course_nme})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    print(course_nme);
+    print(course_idx);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: darkBlue),
