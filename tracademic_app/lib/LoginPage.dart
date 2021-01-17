@@ -67,6 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: TextFormField(
                     controller: controller2,
                     style: TextStyle(color: Colors.black),
+                    obscureText: true,
                     decoration: InputDecoration(
                         hintText: 'Password',
                         hintStyle: TextStyle(color: Colors.black),
