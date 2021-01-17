@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 import 'database/DatabaseHelper.dart';
-import 'graphs.dart';
+import 'DisplayGraph.dart';
 import 'summaryPage.dart';
 
-class TabBarDemo extends StatelessWidget {
+class CourseDetailsTabbedPage extends StatelessWidget {
   final dbHelper = DatabaseHelper.instance;
 
   String name;
   int index;
-  TabBarDemo(this.name, this.index) {
+  CourseDetailsTabbedPage(this.name, this.index) {
     name = this.name;
   }
   @override
@@ -36,7 +36,7 @@ class TabBarDemo extends StatelessWidget {
           body: TabBarView(
             children: [
               SummaryOuterPage(),
-              GraphPage(),
+              DisplayGraph(),
             ],
           ),
         ),

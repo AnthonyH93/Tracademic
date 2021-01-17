@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:tracademic_app/AddCourseForm.dart';
-import 'coursePage.dart';
+import 'CourseDetailsTabbedPage.dart';
 import 'constants.dart' as Constants;
 import 'database/DatabaseHelper.dart';
 
@@ -51,7 +51,7 @@ class _OverviewPageState extends State<OverviewPage> {
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                                TabBarDemo(courses[index], index)));
+                                CourseDetailsTabbedPage(courses[index], index)));
                   },
                   child: ListTile(
                     title: Text('${courses[index]}',

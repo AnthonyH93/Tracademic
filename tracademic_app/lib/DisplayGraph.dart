@@ -6,7 +6,7 @@ import 'database/DatabaseHelper.dart';
 
 final Color darkBlue = Color.fromARGB(255, 18, 32, 47);
 
-class GraphPage extends StatelessWidget {
+class DisplayGraph extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

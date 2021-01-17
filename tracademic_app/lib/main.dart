@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tracademic_app/Overview.dart';
 import 'database/DatabaseHelper.dart';
-import 'graphs.dart';
+import 'DisplayGraph.dart';
 
 import 'LoginPage.dart';
 
