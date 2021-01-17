@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:draw_graph/models/feature.dart';
 
+//Constants for Graphs.dart
 var courses = ['ECE 252', 'ECE 224', 'ECE 208'];
 var color = [Colors.cyan, Colors.green, Colors.red];
 List<List<double>> data = [
@@ -62,3 +63,7 @@ final List<Feature> features = [
     data: [0.6, 0.2, 0, 0.1, 1],
   ),
 ];
+
+//Constants for Courses.dart
+final List<String> courses_courses = <String>['ECE 201', 'ECE 203', 'ECE 207', 'ECE 208', 'ECE 224', 'ECE 252', 'SCI 238', 'ECE 222', 'ECE 222', 'ECE 222'];
+final List<String> courses_courses_grades = <String>['67', '78', '72', '85', '91', '87', '00', '00', '00', '00'];

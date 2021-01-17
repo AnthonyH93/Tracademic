@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'constants.dart' as Constants;
 
 class CoursesPage extends StatefulWidget {
   //create the courses page state class
@@ -8,8 +9,7 @@ class CoursesPage extends StatefulWidget {
 
 class _CoursesPageState extends State<CoursesPage> {
   @override
-  final List<String> courses = <String>['ECE 201', 'ECE 203', 'ECE 207', 'ECE 208', 'ECE 224', 'ECE 252', 'SCI 238', 'ECE 222', 'ECE 222', 'ECE 222'];
-  final List<String> courses_grades = <String>['67', '78', '72', '85', '91', '87', '00', '00', '00', '00'];
+
   Widget build(BuildContext context) {
     Widget averageSection = Container(
       height: 215,
@@ -22,15 +22,15 @@ class _CoursesPageState extends State<CoursesPage> {
     );
     Widget coursesSection = Container(
       child: ListView.separated(
-        itemCount: courses.length,
+        itemCount: Constants.courses_courses.length,
         itemBuilder: (BuildContext context, int index) {
           return InkWell(
             onTap: () {
-              print('${courses[index]}');
+              print('${Constants.courses_courses[index]}');
             },
             child: ListTile(
-              title: Text('${courses[index]}'),
-              trailing: Text('${courses_grades[index]}'),
+              title: Text('${Constants.courses_courses[index]}'),
+              trailing: Text('${Constants.courses_courses_grades[index]}'),
             ),
           );
         },
