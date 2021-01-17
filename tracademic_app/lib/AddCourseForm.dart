@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'database/DatabaseHelper.dart';
+
 class AddCourseForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,19 @@ class AddCourseFormWidget extends StatefulWidget {
 // Create a corresponding State class.
 // This class holds data related to the form.
 class AddCourseFormState extends State<AddCourseFormWidget> {
+  // reference to our single class that manages the database
+  final dbHelper = DatabaseHelper.instance;
+
   final _formKey = GlobalKey<FormState>();
+
+  final textFieldController = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    textFieldController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,16 +57,16 @@ class AddCourseFormState extends State<AddCourseFormWidget> {
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 10, top: 30),
             child: TextFormField(
+              controller: textFieldController,
               style: TextStyle(color: Colors.black),
-                decoration: InputDecoration(
+              decoration: InputDecoration(
                   hintText: 'Course Name',
                   hintStyle: TextStyle(color: Colors.black),
                   filled: true,
                   fillColor: Colors.white,
                   contentPadding: EdgeInsets.all(10),
                   border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20))
-                  ),
+                      borderRadius: BorderRadius.circular(20))),
               validator: (value) {
                 if (value.isEmpty) {
                   return 'Please enter some a course name';
@@ -74,7 +88,8 @@ class AddCourseFormState extends State<AddCourseFormWidget> {
                 // Validate returns true if the form is valid, or false
                 // otherwise.
                 if (_formKey.currentState.validate()) {
-                  // If the form is enter data into the database
+                  // If the form is valid, enter data into the database
+                  String newCourseName = textFieldController.text;
                 }
               },
               child: Text('Add Course'),
