@@ -42,7 +42,7 @@ class _AddGradeFormState extends State<AddGradeForm> {
   final controller1 = TextEditingController();
   final controller2 = TextEditingController();
   String dropdownValue = 'Quiz';
-
+  var options = <String>['Quiz', 'Exam', 'Lab', 'Assignment'];
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
@@ -132,8 +132,7 @@ class _AddGradeFormState extends State<AddGradeForm> {
                       dropdownValue = newValue;
                     });
                   },
-                  items: <String>['Quiz', 'Exam', 'Lab', 'Assignment']
-                      .map<DropdownMenuItem<String>>((String value) {
+                  items: options.map<DropdownMenuItem<String>>((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
                       child: Text(value),
@@ -158,6 +157,7 @@ class _AddGradeFormState extends State<AddGradeForm> {
                         //Add course in database
 
                         //Navigate to TermPage
+                        print(options.indexOf(dropdownValue));
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
