@@ -5,8 +5,6 @@ class SummaryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      // home: ListView(
-      // padding: const EdgeInsets.all(150),
       children: <Widget>[
         Container(
           height: 20,
