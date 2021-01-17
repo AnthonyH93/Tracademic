@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'TermPage.dart';
+import 'package:tracademic_app/Courses.dart';
+import 'package:tracademic_app/database/DatabaseHelper.dart';
 
 class LoginPage extends StatefulWidget {
   //create the login page state class
@@ -11,6 +12,17 @@ class _LoginPageState extends State<LoginPage> {
   //TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
 
   final _formKey = GlobalKey<FormState>();
+  final dbHelper = DatabaseHelper.instance;
+  final controller1 = TextEditingController();
+  final controller2 = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    controller1.dispose();
+    controller2.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +41,7 @@ class _LoginPageState extends State<LoginPage> {
                   padding:
                       EdgeInsets.only(top: 70, bottom: 30, left: 10, right: 10),
                   child: TextFormField(
+                    controller: controller1,
                     style: TextStyle(color: Colors.black),
                     decoration: InputDecoration(
                       hintText: 'Username',
@@ -51,6 +64,7 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: EdgeInsets.all(10),
                   child: TextFormField(
+                    controller: controller2,
                     style: TextStyle(color: Colors.black),
                     decoration: InputDecoration(
                         hintText: 'Password',
@@ -82,12 +96,13 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
                         //connect to firebase and validate user
-
+                        print(controller1.text);
+                        print(controller2.text);
                         //Navigate to TermPage
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => TermPage()));
+                                builder: (context) => CoursesPage()));
                       }
                     },
                     child: Text(

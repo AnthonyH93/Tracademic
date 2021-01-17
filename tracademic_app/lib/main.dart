@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:tracademic_app/Courses.dart';
+import 'database/DatabaseHelper.dart';
 import 'graphs.dart';
 
 import 'LoginPage.dart';
 
-import 'database/databaseFunctions.dart';
-
-void main() async {
-  //WidgetsFlutterBinding.ensureInitialized();
-
+void main() {
   runApp(Nav2App());
 }
 
@@ -21,6 +19,9 @@ class Nav2App extends StatelessWidget {
 }
 
 class MyApp extends StatelessWidget {
+  // reference to our single class that manages the database
+  final dbHelper = DatabaseHelper.instance;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
