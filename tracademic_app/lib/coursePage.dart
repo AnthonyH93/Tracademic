@@ -7,15 +7,16 @@ import 'summaryPage.dart';
 
 class TabBarDemo extends StatelessWidget {
   final dbHelper = DatabaseHelper.instance;
+  final int course_index;
+  final String course_name;
 
-  String name;
-  int index;
-  TabBarDemo(this.name, this.index) {
-    name = this.name;
-    index = this.index;
-  }
+  TabBarDemo({Key key, @required this.course_index, @required this.course_name})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    print(course_name);
+    print(course_index);
     return MaterialApp(
       theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: darkBlue),
       home: DefaultTabController(
@@ -33,7 +34,7 @@ class TabBarDemo extends StatelessWidget {
                 Tab(text: 'Graph'),
               ],
             ),
-            title: Text(name),
+            title: Text(course_name),
             centerTitle: true,
             leading: IconButton(
               icon: Icon(Icons.arrow_back, color: Colors.white),
@@ -54,8 +55,13 @@ class TabBarDemo extends StatelessWidget {
           ),
           floatingActionButton: RaisedButton(
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => MyAddGradeForm()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => MyAddGradeForm(
+                            course_idx: course_index,
+                            course_nme: course_name,
+                          )));
             },
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
