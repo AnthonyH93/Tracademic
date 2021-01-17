@@ -34,6 +34,11 @@ class TabBarDemo extends StatelessWidget {
               ],
             ),
             title: Text(name),
+            centerTitle: true,
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back, color: Colors.white),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
           ),
           body: TabBarView(
             children: [
