@@ -24,6 +24,7 @@ class DatabaseHelper {
   //1=quiz, 2=assignment, 3=lab, 4=exam
   static final gradeCategory = 'gradeCategory';
   static final numericalGrade = 'numericalGrade';
+  static final courseWeight = 'courseWeight';
 
   // make this a singleton class
   DatabaseHelper._privateConstructor();
@@ -65,26 +66,26 @@ class DatabaseHelper {
           ''');
   }
 
-  // Helper methods
+  // Helper methods for coursesTable
 
   // Inserts a row in the database where each key in the Map is a column name
   // and the value is the column value. The return value is the id of the
   // inserted row.
-  Future<int> insert(Map<String, dynamic> row) async {
+  Future<int> insertCourses(Map<String, dynamic> row) async {
     Database db = await instance.database;
     return await db.insert(coursesTable, row);
   }
 
   // All of the rows are returned as a list of maps, where each map is
   // a key-value list of columns.
-  Future<List<Map<String, dynamic>>> queryAllRows() async {
+  Future<List<Map<String, dynamic>>> queryAllRowsCourses() async {
     Database db = await instance.database;
     return await db.query(coursesTable);
   }
 
   // All of the methods (insert, query, update, delete) can also be done using
   // raw SQL commands. This method uses a raw query to give the row count.
-  Future<int> queryRowCount() async {
+  Future<int> queryRowCountCourses() async {
     Database db = await instance.database;
     return Sqflite.firstIntValue(
         await db.rawQuery('SELECT COUNT(*) FROM $coursesTable'));
@@ -92,7 +93,7 @@ class DatabaseHelper {
 
   // We are assuming here that the id column in the map is set. The other
   // column values will be used to update the row.
-  Future<int> update(Map<String, dynamic> row) async {
+  Future<int> updateCourses(Map<String, dynamic> row) async {
     Database db = await instance.database;
     int id = row[courseIdentifier];
     return await db.update(coursesTable, row,
@@ -101,7 +102,7 @@ class DatabaseHelper {
 
   // Deletes the row specified by the id. The number of affected rows is
   // returned. This should be 1 as long as the row exists.
-  Future<int> delete(int id) async {
+  Future<int> deleteCourses(int id) async {
     Database db = await instance.database;
     return await db
         .delete(coursesTable, where: '$courseIdentifier = ?', whereArgs: [id]);
