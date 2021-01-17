@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:draw_graph/draw_graph.dart';
 import 'package:draw_graph/models/feature.dart';
 import 'constants.dart' as Constants;
+import 'database/DatabaseHelper.dart';
 
 final Color darkBlue = Color.fromARGB(255, 18, 32, 47);
 
@@ -27,6 +28,9 @@ class Graphs extends StatefulWidget {
 }
 
 class _GraphsState extends State<Graphs> {
+
+  final dbHelper = DatabaseHelper.instance;
+  
   List<Feature> features = Constants.features;
 
   @override
