@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'graphs.dart';
-
+import 'Courses.dart';
 import 'LoginPage.dart';
 
 import 'database/databaseFunctions.dart';
@@ -34,10 +34,7 @@ class MyApp extends StatelessWidget {
             child: Text(''),
           ),
         ),
-        body: Padding(
-          padding: EdgeInsets.fromLTRB(40, 50, 40, 0),
-          child: LoginPage(),
-        ),
+        body: CoursesPage()
       ),
     );
   }
