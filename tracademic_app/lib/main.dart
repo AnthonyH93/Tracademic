@@ -4,7 +4,16 @@ import 'graphs.dart';
 import 'LoginPage.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(Nav2App());
+}
+
+class Nav2App extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: MyApp(),
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {

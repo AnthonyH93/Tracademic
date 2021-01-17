@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'graphs.dart';
+
 class LoginPage extends StatefulWidget {
   //create the login page state class
   @override
@@ -83,6 +85,29 @@ class _LoginPageState extends State<LoginPage> {
                     },
                     child: Text(
                       'Login',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(30),
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          Color.fromRGBO(0, 224, 199, 100)),
+                      padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                          EdgeInsets.fromLTRB(80, 15, 80, 15)),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) {
+                          return GraphPage();
+                        }),
+                      );
+                    },
+                    child: Text(
+                      'Navigate',
                       style: TextStyle(fontSize: 20),
                     ),
                   ),
