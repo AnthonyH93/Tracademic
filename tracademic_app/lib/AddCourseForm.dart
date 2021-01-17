@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'Courses.dart';
 import 'database/DatabaseHelper.dart';
 
 class AddCourseForm extends StatelessWidget {
@@ -91,6 +91,10 @@ class AddCourseFormState extends State<AddCourseFormWidget> {
                   // If the form is valid, enter data into the database
                   String newCourseName = textFieldController.text;
                   insertCourse(newCourseName);
+
+                  //Navigate back to Courses
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => CoursesPage()));
                 }
               },
               child: Text('Add Course'),

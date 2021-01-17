@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tracademic_app/AddCourseForm.dart';
 import 'constants.dart' as Constants;
 
 class CoursesPage extends StatefulWidget {
@@ -11,19 +12,18 @@ class _CoursesPageState extends State<CoursesPage> {
   @override
   Widget build(BuildContext context) {
     num average = 0;
-    for(var i = 0; i < Constants.courses_courses_grades.length; i++){
+    for (var i = 0; i < Constants.courses_courses_grades.length; i++) {
       average += Constants.courses_courses_grades[i];
     }
     average /= Constants.courses_courses_grades.length;
     int rounded_average = average.toInt();
     Widget averageSection = Container(
       height: 215,
-      child: Column(
-        children: <Widget>[
-          Text("Overall Average", style: TextStyle(fontSize: 24, color: Colors.white)),
-          Text(rounded_average.toString(), style: TextStyle(fontSize: 80))
-        ]
-      ),
+      child: Column(children: <Widget>[
+        Text("Overall Average",
+            style: TextStyle(fontSize: 24, color: Colors.white)),
+        Text(rounded_average.toString(), style: TextStyle(fontSize: 80))
+      ]),
     );
     Widget coursesSection = Container(
       child: ListView.separated(
@@ -58,6 +58,9 @@ class _CoursesPageState extends State<CoursesPage> {
       floatingActionButton: RaisedButton(
         onPressed: () => setState(() {
           print("Button pressed");
+          //Navigate to AddCourseForm
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => AddCourseForm()));
         }),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: Text("Add Course"),
