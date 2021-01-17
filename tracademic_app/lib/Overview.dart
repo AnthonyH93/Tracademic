@@ -3,13 +3,13 @@ import 'package:tracademic_app/AddCourseForm.dart';
 import 'coursePage.dart';
 import 'constants.dart' as Constants;
 
-class CoursesPage extends StatefulWidget {
+class OverviewPage extends StatefulWidget {
   //create the courses page state class
   @override
-  _CoursesPageState createState() => _CoursesPageState();
+  _OverviewPageState createState() => _OverviewPageState();
 }
 
-class _CoursesPageState extends State<CoursesPage> {
+class _OverviewPageState extends State<OverviewPage> {
   @override
   Widget build(BuildContext context) {
     num average = 0;

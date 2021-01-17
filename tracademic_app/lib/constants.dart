@@ -64,6 +64,6 @@ final List<Feature> features = [
   ),
 ];
 
-//Constants for Courses.dart
+//Constants for Overview.dart
 final List<String> courses_courses = <String>['ECE 201', 'ECE 203', 'ECE 207', 'ECE 208', 'ECE 224', 'ECE 252'];
 final List<int> courses_courses_grades = <int>[67, 78, 72, 85, 91, 87];

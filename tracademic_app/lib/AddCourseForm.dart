@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Courses.dart';
+import 'Overview.dart';
 import 'database/DatabaseHelper.dart';
 
 class AddCourseForm extends StatelessWidget {
@@ -94,7 +94,7 @@ class AddCourseFormState extends State<AddCourseFormWidget> {
 
                   //Navigate back to Courses
                   Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => CoursesPage()));
+                      MaterialPageRoute(builder: (context) => OverviewPage()));
                 }
               },
               child: Text('Add Course'),

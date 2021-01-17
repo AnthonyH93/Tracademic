@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tracademic_app/Courses.dart';
+import 'package:tracademic_app/Overview.dart';
 import 'package:tracademic_app/database/DatabaseHelper.dart';
 
 class LoginPage extends StatefulWidget {
@@ -102,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => CoursesPage()));
+                                builder: (context) => OverviewPage()));
                       }
                     },
                     child: Text(
