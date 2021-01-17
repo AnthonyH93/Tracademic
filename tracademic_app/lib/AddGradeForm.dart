@@ -80,7 +80,7 @@ class _AddGradeFormState extends State<AddGradeForm> {
                           borderRadius: BorderRadius.circular(20)),
                     ),
                     validator: (value) {
-                      if (value.isEmpty) {
+                      if (value.isEmpty || (int.parse(value) > 100)) {
                         return 'Please enter a valid grade';
                       }
                       return null;
@@ -106,7 +106,7 @@ class _AddGradeFormState extends State<AddGradeForm> {
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20))),
                     validator: (value) {
-                      if (value.isEmpty) {
+                      if (value.isEmpty || (int.parse(value) > 100)) {
                         return 'Please enter a valid weight';
                       }
                       return null;
