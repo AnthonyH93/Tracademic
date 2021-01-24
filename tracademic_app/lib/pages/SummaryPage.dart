@@ -428,7 +428,7 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
   void updateCourseGrade(
       int courseIdToUpdate, int newGrade, String courseName) async {
     Map<String, dynamic> row = {
-      DatabaseHelper.courseIdentifier: courseIdToUpdate,
+      DatabaseHelper.courseIdentifier: courseIdToUpdate + 1,
       DatabaseHelper.courseName: courseName,
       DatabaseHelper.courseGrade: newGrade
     };

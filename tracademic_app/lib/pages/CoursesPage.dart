@@ -29,7 +29,6 @@ class TabbedCourseView extends StatelessWidget {
             bottom: TabBar(
               tabs: [
                 Tab(text: 'Summary'),
-
                 Tab(text: 'Graph'),
               ],
             ),
@@ -37,7 +36,7 @@ class TabbedCourseView extends StatelessWidget {
             centerTitle: true,
             leading: IconButton(
               icon: Icon(Icons.arrow_back, color: Colors.white),
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () => Navigator.pop(context),
             ),
           ),
           body: TabBarView(

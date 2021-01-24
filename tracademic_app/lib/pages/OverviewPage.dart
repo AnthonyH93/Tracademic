@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -38,14 +39,17 @@ class _OverviewPageState extends State<OverviewPage> {
               itemCount: courses.length,
               itemBuilder: (BuildContext context, int index) {
                 return InkWell(
-                  onTap: () {
-                    Navigator.push(
+                  onTap: () async {
+                    final value = await Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => TabbedCourseView(
                                   course_index: index,
                                   course_name: courses[index],
                                 )));
+                    setState(() {
+                      getAllCourses();
+                    });
                   },
                   child: ListTile(
                     title: Text('${courses[index]}',
@@ -86,7 +90,6 @@ class _OverviewPageState extends State<OverviewPage> {
               ),
               floatingActionButton: RaisedButton(
                 onPressed: () => setState(() {
-                  print("Button pressed");
                   //Navigate to AddCourseForm
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => AddCourseForm()));
@@ -127,7 +130,6 @@ class _OverviewPageState extends State<OverviewPage> {
                 ),
                 floatingActionButton: RaisedButton(
                   onPressed: () => setState(() {
-                    print("Button pressed");
                     //Navigate to AddCourseForm
                     Navigator.push(
                         context,
@@ -158,7 +160,7 @@ class _OverviewPageState extends State<OverviewPage> {
       courses = array;
       allCourses.forEach((row) => array2.add(row[DatabaseHelper.courseGrade]));
       grades = array2;
-
+      allCourses.forEach((row) => print(row));
       return true;
     }
   }
