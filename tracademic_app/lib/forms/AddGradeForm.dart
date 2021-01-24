@@ -2,26 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tracademic_app/pages/OverviewPage.dart';
 import 'package:tracademic_app/pages/GraphPage.dart';
+import 'package:tracademic_app/pages/SummaryPage.dart';
 import '../pages/CoursesPage.dart';
 import '../database/DatabaseHelper.dart';
 
-int course_index;
+int gradeFormCourseIndex;
+String gradeFormCourseName;
 
 class MyAddGradeForm extends StatelessWidget {
   // reference to our single class that manages the database
   final dbHelper = DatabaseHelper.instance;
-  final int course_idx;
-  final String course_nme;
+  final int course_index;
+  final String course_name;
 
   MyAddGradeForm(
-      {Key key, @required this.course_idx, @required this.course_nme})
+      {Key key, @required this.course_index, @required this.course_name})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    course_index = course_idx;
-    print(course_nme);
-    print(course_idx);
+    gradeFormCourseIndex = course_index;
+    gradeFormCourseName = course_name;
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -162,7 +163,6 @@ class _AddGradeFormState extends State<AddGradeForm> {
                     ),
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
-                        //connect to firebase and validate user
                         print(controller1.text);
                         print(controller2.text);
                         print(options.indexOf(dropdownValue));
@@ -171,12 +171,12 @@ class _AddGradeFormState extends State<AddGradeForm> {
                         int category = options.indexOf(dropdownValue);
                         int gradeValue = int.parse(controller1.text);
                         int gradeWeight = int.parse(controller2.text);
-                        int courseRelated = course_index;
+                        int courseRelated = gradeFormCourseIndex;
 
                         insertGrade(
                             gradeValue, gradeWeight, category, courseRelated);
 
-                        //Navigate to TermPage
+                        //Navigate to Overview Page
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(

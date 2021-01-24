@@ -3,6 +3,7 @@ import 'package:tracademic_app/forms/AddGradeForm.dart';
 
 import '../database/DatabaseHelper.dart';
 import 'GraphPage.dart';
+import 'OverviewPage.dart';
 import 'SummaryPage.dart';
 
 class TabBarDemo extends StatelessWidget {
@@ -60,8 +61,8 @@ class TabBarDemo extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) => MyAddGradeForm(
-                            course_idx: course_index,
-                            course_nme: course_name,
+                            course_index: course_index,
+                            course_name: course_name,
                           )));
             },
             shape:
