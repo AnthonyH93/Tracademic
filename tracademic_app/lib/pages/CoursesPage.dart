@@ -3,7 +3,6 @@ import 'package:tracademic_app/forms/AddGradeForm.dart';
 
 import '../database/DatabaseHelper.dart';
 import 'GraphPage.dart';
-import 'OverviewPage.dart';
 import 'SummaryPage.dart';
 
 class TabbedCourseView extends StatelessWidget {

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sqflite/sqlite_api.dart';
 import 'package:tracademic_app/database/DatabaseHelper.dart';
-import '../models/constants.dart' as Constants;
 
 class SummaryOuterPage extends StatefulWidget {
   //create the summary page state class

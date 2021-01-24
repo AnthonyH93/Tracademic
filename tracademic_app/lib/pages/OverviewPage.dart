@@ -1,10 +1,9 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:sqflite/sqlite_api.dart';
 import 'package:tracademic_app/forms/AddCourseForm.dart';
 import 'CoursesPage.dart';
-import '../models/constants.dart' as Constants;
 import '../database/DatabaseHelper.dart';
 
 class OverviewPage extends StatefulWidget {
@@ -152,16 +151,52 @@ class _OverviewPageState extends State<OverviewPage> {
       courses = [];
       return false;
     } else {
+      int gradeCount = await dbHelper.queryRowCountGrades();
+      if (gradeCount > 0) {
+        getGradeInformation(courseCount);
+      }
+
       List<Map<String, dynamic>> allCourses =
           await dbHelper.queryAllRowsCourses();
       List<String> array = [];
-      List<int> array2 = [];
       allCourses.forEach((row) => array.add(row[DatabaseHelper.courseName]));
       courses = array;
-      allCourses.forEach((row) => array2.add(row[DatabaseHelper.courseGrade]));
-      grades = array2;
       allCourses.forEach((row) => print(row));
+
       return true;
     }
+  }
+
+  void getGradeInformation(int courseCount) async {
+    List<int> courseIdList = [];
+    List<int> numericalGradesList = [];
+    List<int> weightList = [];
+    List<Map<String, dynamic>> allGrades = await dbHelper.queryAllRowsGrades();
+    allGrades.forEach((row) {
+      courseIdList.add(row[DatabaseHelper.relatedCourseId]);
+      numericalGradesList.add(row[DatabaseHelper.numericalGrade]);
+      weightList.add(row[DatabaseHelper.courseWeight]);
+    });
+
+    List<int> averages = [];
+    for (var index = 0; index < courseCount; index++) {
+      int gradeCounter = 0;
+      int weightSummer = 0;
+      for (var index2 = 0; index2 < courseIdList.length; index2++) {
+        if (courseIdList[index2] == index) {
+          gradeCounter += weightList[index2];
+          weightSummer += numericalGradesList[index2] * weightList[index2];
+        } else {
+          //Don't count
+        }
+      }
+      if (gradeCounter == 0) {
+        averages.add(0);
+      } else {
+        double unroundedAverage = weightSummer / gradeCounter;
+        averages.add(unroundedAverage.round());
+      }
+    }
+    grades = averages;
   }
 }

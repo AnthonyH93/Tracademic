@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tracademic_app/pages/OverviewPage.dart';
 import 'package:tracademic_app/pages/GraphPage.dart';
-import 'package:tracademic_app/pages/SummaryPage.dart';
-import '../pages/CoursesPage.dart';
 import '../database/DatabaseHelper.dart';
 
 int gradeFormCourseIndex;
