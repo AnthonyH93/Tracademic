@@ -118,7 +118,7 @@ class DatabaseHelper {
 
   Future<List<Map<String, dynamic>>> queryAllRowsGrades() async {
     Database db = await instance.database;
-    return await db.query(coursesTable);
+    return await db.query(gradesTable);
   }
 
   Future<int> queryRowCountGrades() async {
@@ -130,13 +130,13 @@ class DatabaseHelper {
   Future<int> updateGrades(Map<String, dynamic> row) async {
     Database db = await instance.database;
     int id = row[courseIdentifier];
-    return await db.update(coursesTable, row,
+    return await db.update(gradesTable, row,
         where: '$gradeIdentifier = ?', whereArgs: [id]);
   }
 
   Future<int> deleteGrades(int id) async {
     Database db = await instance.database;
     return await db
-        .delete(coursesTable, where: '$gradeIdentifier = ?', whereArgs: [id]);
+        .delete(gradesTable, where: '$gradeIdentifier = ?', whereArgs: [id]);
   }
 }
