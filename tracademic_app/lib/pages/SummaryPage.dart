@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:tracademic_app/database/DatabaseHelper.dart';
 import '../models/constants.dart' as Constants;
 
 class SummaryOuterPage extends StatelessWidget {
+  final int course_index;
+  final String course_name;
+
+  SummaryOuterPage(
+      {Key key, @required this.course_index, @required this.course_name})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -11,7 +18,8 @@ class SummaryOuterPage extends StatelessWidget {
         // backgroundColor: Color.fromRGBO(54, 66, 97, 100),
         body: Padding(
           padding: EdgeInsets.fromLTRB(40, 0, 40, 0),
-          child: SummaryPage(),
+          child:
+              SummaryPage(course_index: course_index, course_name: course_name),
         ),
       ),
     );
@@ -19,6 +27,15 @@ class SummaryOuterPage extends StatelessWidget {
 }
 
 class SummaryPage extends StatelessWidget {
+  final dbHelper = DatabaseHelper.instance;
+
+  final int course_index;
+  final String course_name;
+
+  SummaryPage(
+      {Key key, @required this.course_index, @required this.course_name})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -80,5 +97,24 @@ class SummaryPage extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  Future<bool> getAllGrades() async {
+    int courseCount = await dbHelper.queryRowCountCourses();
+
+    if (courseCount == 0) {
+      //courses = [];
+      return false;
+    } else {
+      List<Map<String, dynamic>> allCourses =
+          await dbHelper.queryAllRowsCourses();
+      List<String> array = [];
+      List<int> array2 = [];
+      allCourses.forEach((row) => array.add(row[DatabaseHelper.courseName]));
+      //courses = array;
+      allCourses.forEach((row) => array2.add(row[DatabaseHelper.courseGrade]));
+      //grades = array2;
+      return true;
+    }
   }
 }

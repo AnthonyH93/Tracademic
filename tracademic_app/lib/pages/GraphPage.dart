@@ -5,10 +5,19 @@ import '../models/constants.dart' as Constants;
 import '../database/DatabaseHelper.dart';
 
 final Color darkBlue = Color.fromARGB(255, 18, 32, 47);
+int courseIndex;
+String courseName;
 
 class GraphPage extends StatelessWidget {
+  final int course_index;
+  final String course_name;
+
+  GraphPage({Key key, @required this.course_index, @required this.course_name})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
+    courseIndex = course_index;
+    courseName = course_name;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(

@@ -43,8 +43,9 @@ class TabBarDemo extends StatelessWidget {
           ),
           body: TabBarView(
             children: [
-              SummaryOuterPage(),
-              GraphPage(),
+              SummaryOuterPage(
+                  course_index: course_index, course_name: course_name),
+              GraphPage(course_index: course_index, course_name: course_name),
             ],
           ),
           bottomNavigationBar: BottomAppBar(
