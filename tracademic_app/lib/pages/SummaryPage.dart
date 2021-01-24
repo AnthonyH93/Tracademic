@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:tracademic_app/database/DatabaseHelper.dart';
 import '../models/constants.dart' as Constants;
 
-int courseIndex;
-String courseName;
-
 class SummaryOuterPage extends StatefulWidget {
   //create the summary page state class
   final int course_index;
@@ -32,6 +29,63 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
         if (snapshot.hasData && (courseIdentifiers.length > 0)) {
           double screenHeight = MediaQuery.of(context).size.height;
           screenHeight -= 100;
+
+          int courseIndex = widget.course_index;
+
+          //Need to calculate the average marks
+          int quizAverage = 0;
+          int examAverage = 0;
+          int labAverage = 0;
+          int assignmentAverage = 0;
+          int quizCounter = 1;
+          int examCounter = 1;
+          int labCounter = 1;
+          int assignmentCounter = 1;
+          int overallAverage = 0;
+          for (var counter = 0; counter < courseIdentifiers.length; counter++) {
+            if (courseIdentifiers[counter] != courseIndex) {
+              //Skip grade
+            } else {
+              switch (gradeCategories[counter]) {
+                case 0:
+                  quizCounter += gradeWeights[counter];
+                  quizAverage += gradeNumbers[counter] * gradeWeights[counter];
+                  break;
+                case 1:
+                  examCounter += gradeWeights[counter];
+                  examAverage += gradeNumbers[counter] * gradeWeights[counter];
+                  break;
+                case 2:
+                  labCounter += gradeWeights[counter];
+                  labAverage += gradeNumbers[counter] * gradeWeights[counter];
+                  break;
+                case 3:
+                  assignmentCounter += gradeWeights[counter];
+                  assignmentAverage +=
+                      gradeNumbers[counter] * gradeWeights[counter];
+                  break;
+                default:
+                  break;
+              }
+
+              //Add to overall average in any case
+              overallAverage += gradeWeights[counter];
+            }
+          }
+          //Ready to calculate averages
+          quizCounter -= 1;
+          examCounter -= 1;
+          labCounter -= 1;
+          assignmentCounter -= 1;
+
+          double overallAverageFinal = overallAverage /
+              (quizCounter + examCounter + labCounter + assignmentCounter);
+
+          double quizAverageFinal = quizAverage / quizCounter;
+          double examAverageFinal = examAverage / examCounter;
+          double labAverageFinal = labAverage / labCounter;
+          double assignmentAverageFinal = assignmentAverage / assignmentCounter;
+
           return MaterialApp(
               debugShowCheckedModeBanner: false,
               home: Scaffold(
@@ -66,7 +120,7 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text(
-                                    '87%',
+                                    examAverageFinal.toString(),
                                     style: TextStyle(
                                         fontSize: 30,
                                         color: Colors.black,
@@ -334,6 +388,7 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
       allGrades.forEach((row) => array4.add(row[DatabaseHelper.gradeCategory]));
       gradeCategories = array4;
       allGrades.forEach((row) => print(row));
+
       return true;
     }
   }
