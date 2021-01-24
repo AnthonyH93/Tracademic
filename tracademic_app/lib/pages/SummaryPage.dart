@@ -74,14 +74,23 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
               overallAverage += gradeNumbers[counter] * gradeWeights[counter];
             }
           }
-          //Ready to calculate averages
-          quizCounter -= 1;
-          examCounter -= 1;
-          labCounter -= 1;
-          assignmentCounter -= 1;
+          //Ready to calculate averages, be careful not to divide by 0
 
           double overallAverageFinal = overallAverage /
-              (quizCounter + examCounter + labCounter + assignmentCounter);
+              (quizCounter + examCounter + labCounter + assignmentCounter - 4);
+
+          if (quizCounter > 1) {
+            quizCounter -= 1;
+          }
+          if (examCounter > 1) {
+            examCounter -= 1;
+          }
+          if (labCounter > 1) {
+            labCounter -= 1;
+          }
+          if (assignmentCounter > 1) {
+            assignmentCounter -= 1;
+          }
 
           //Update overall average in database
           updateCourseGrade(
