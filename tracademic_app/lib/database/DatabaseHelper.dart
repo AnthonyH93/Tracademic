@@ -53,7 +53,7 @@ class DatabaseHelper {
           CREATE TABLE $coursesTable (
             $courseIdentifier INTEGER PRIMARY KEY,
             $courseName STRING NOT NULL,
-            $courseGrade INTEGER
+            $courseGrade STRING
           )
           ''');
     await db.execute('''

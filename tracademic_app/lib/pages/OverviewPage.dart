@@ -24,20 +24,12 @@ class _OverviewPageState extends State<OverviewPage> {
       builder: (context, snapshot) {
         if (snapshot.hasData && (courses.length > 0)) {
           num average = 0;
-          for (var i = 0; i < courses.length; i++) {
-            average += grades[i];
-          }
-          print(courses.length);
-          if (!(courses.length == 0)) {
-            average /= courses.length;
-          }
-          int rounded_average = average.toInt();
           Widget averageSection = Container(
             height: 215,
             child: Column(children: <Widget>[
               Text("Overall Average",
                   style: TextStyle(fontSize: 24, color: Colors.white)),
-              Text(rounded_average.toString(),
+              Text(average.toString(),
                   style: TextStyle(fontSize: 80, color: Colors.white))
             ]),
           );
@@ -154,7 +146,6 @@ class _OverviewPageState extends State<OverviewPage> {
 
   Future<bool> getAllCourses() async {
     int courseCount = await dbHelper.queryRowCountCourses();
-
     if (courseCount == 0) {
       courses = [];
       return false;
@@ -162,11 +153,13 @@ class _OverviewPageState extends State<OverviewPage> {
       List<Map<String, dynamic>> allCourses =
           await dbHelper.queryAllRowsCourses();
       List<String> array = [];
-      List<int> array2 = [];
+      List<String> array2 = [];
       allCourses.forEach((row) => array.add(row[DatabaseHelper.courseName]));
       courses = array;
       allCourses.forEach((row) => array2.add(row[DatabaseHelper.courseGrade]));
       grades = array2;
+
+      allCourses.forEach((row) => print(row));
       return true;
     }
   }

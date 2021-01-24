@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sqflite/sqlite_api.dart';
 import 'package:tracademic_app/database/DatabaseHelper.dart';
 import '../models/constants.dart' as Constants;
 
@@ -31,6 +32,7 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
           screenHeight -= 100;
 
           int courseIndex = widget.course_index;
+          String courseName = widget.course_name;
 
           //Need to calculate the average marks
           int quizAverage = 0;
@@ -80,6 +82,10 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
 
           double overallAverageFinal = overallAverage /
               (quizCounter + examCounter + labCounter + assignmentCounter);
+
+          //Update overall average in database
+          updateCourseGrade(
+              courseIndex, overallAverageFinal.toStringAsFixed(1), courseName);
 
           double quizAverageFinal = quizAverage / quizCounter;
           double examAverageFinal = examAverage / examCounter;
@@ -393,5 +399,16 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
 
       return true;
     }
+  }
+
+  void updateCourseGrade(
+      int courseIdToUpdate, String newGrade, String courseName) async {
+    Map<String, dynamic> row = {
+      DatabaseHelper.courseIdentifier: courseIdToUpdate,
+      DatabaseHelper.courseGrade: newGrade,
+      DatabaseHelper.courseName: courseName
+    };
+    final result = await dbHelper.updateCourses(row);
+    print('Updated row $result');
   }
 }

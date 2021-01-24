@@ -110,7 +110,7 @@ class AddCourseFormState extends State<AddCourseFormWidget> {
     // row to insert
     Map<String, dynamic> row = {
       DatabaseHelper.courseName: name,
-      DatabaseHelper.courseGrade: 0
+      DatabaseHelper.courseGrade: '0'
     };
     final id = await dbHelper.insertCourses(row);
     print('inserted row id: $id');
