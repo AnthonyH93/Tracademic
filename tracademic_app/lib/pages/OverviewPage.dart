@@ -23,13 +23,19 @@ class _OverviewPageState extends State<OverviewPage> {
       future: getAllCourses(),
       builder: (context, snapshot) {
         if (snapshot.hasData && (courses.length > 0)) {
-          num average = 0;
+          double average = 0;
+          if (grades.length > 0) {
+            for (var gradeCount = 0; gradeCount < grades.length; gradeCount++) {
+              average += grades[gradeCount];
+            }
+            average /= grades.length;
+          }
           Widget averageSection = Container(
-            height: 215,
+            height: 125,
             child: Column(children: <Widget>[
               Text("Overall Average",
                   style: TextStyle(fontSize: 24, color: Colors.white)),
-              Text(average.toString(),
+              Text(average.toStringAsFixed(1) + '%',
                   style: TextStyle(fontSize: 80, color: Colors.white))
             ]),
           );
@@ -53,7 +59,7 @@ class _OverviewPageState extends State<OverviewPage> {
                   child: ListTile(
                     title: Text('${courses[index]}',
                         style: TextStyle(fontSize: 24, color: Colors.white)),
-                    trailing: Text('${grades[index]}',
+                    trailing: Text('${grades[index]}%',
                         style: TextStyle(fontSize: 24, color: Colors.white)),
                   ),
                 );
