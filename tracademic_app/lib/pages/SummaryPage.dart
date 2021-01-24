@@ -85,7 +85,7 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
 
           //Update overall average in database
           updateCourseGrade(
-              courseIndex, overallAverageFinal.toStringAsFixed(1), courseName);
+              courseIndex, overallAverageFinal.round(), courseName);
 
           double quizAverageFinal = quizAverage / quizCounter;
           double examAverageFinal = examAverage / examCounter;
@@ -402,11 +402,11 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
   }
 
   void updateCourseGrade(
-      int courseIdToUpdate, String newGrade, String courseName) async {
+      int courseIdToUpdate, int newGrade, String courseName) async {
     Map<String, dynamic> row = {
       DatabaseHelper.courseIdentifier: courseIdToUpdate,
-      DatabaseHelper.courseGrade: newGrade,
-      DatabaseHelper.courseName: courseName
+      DatabaseHelper.courseName: courseName,
+      DatabaseHelper.courseGrade: newGrade
     };
     final result = await dbHelper.updateCourses(row);
     print('Updated row $result');
