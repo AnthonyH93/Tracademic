@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:tracademic_app/AddCourseForm.dart';
-import 'coursePage.dart';
-import 'constants.dart' as Constants;
+import 'CoursesPage.dart';
+import 'models/constants.dart' as Constants;
 import 'database/DatabaseHelper.dart';
 
 class OverviewPage extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'constants.dart' as Constants;
+import 'models/constants.dart' as Constants;
 
 class SummaryOuterPage extends StatelessWidget {
   @override

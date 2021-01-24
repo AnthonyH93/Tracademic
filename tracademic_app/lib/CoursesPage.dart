@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:tracademic_app/AddGradeForm.dart';
 
 import 'database/DatabaseHelper.dart';
-import 'graphs.dart';
-import 'summaryPage.dart';
+import 'GraphPage.dart';
+import 'SummaryPage.dart';
 
 class TabBarDemo extends StatelessWidget {
   final dbHelper = DatabaseHelper.instance;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tracademic_app/Overview.dart';
-import 'package:tracademic_app/graphs.dart';
-import 'coursePage.dart';
+import 'package:tracademic_app/OverviewPage.dart';
+import 'package:tracademic_app/GraphPage.dart';
+import 'CoursesPage.dart';
 import 'database/DatabaseHelper.dart';
 
 int course_index;

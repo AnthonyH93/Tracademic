@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Overview.dart';
+import 'OverviewPage.dart';
 import 'database/DatabaseHelper.dart';
 
 class AddCourseForm extends StatelessWidget {
