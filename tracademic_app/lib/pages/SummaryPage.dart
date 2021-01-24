@@ -30,29 +30,21 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
       future: getAllGrades(),
       builder: (context, snapshot) {
         if (snapshot.hasData && (courseIdentifiers.length > 0)) {
+          double screenHeight = MediaQuery.of(context).size.height;
+          screenHeight -= 100;
           return MaterialApp(
               debugShowCheckedModeBanner: false,
               home: Scaffold(
                   backgroundColor: Colors.blueGrey[50],
-                  // backgroundColor: Color.fromRGBO(54, 66, 97, 100),
                   body: Padding(
                       padding: EdgeInsets.fromLTRB(40, 0, 40, 0),
                       child: ListView(
                         children: <Widget>[
                           Container(
-                            height: 20,
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              '',
-                              style:
-                                  TextStyle(fontSize: 30, color: Colors.black),
-                            ),
-                          ),
-                          Container(
-                            height: 100,
+                            height: screenHeight / 10,
                             alignment: Alignment.center,
                             child: Text(
-                              'Current Grades:',
+                              'Current Grades',
                               style: TextStyle(
                                   fontSize: 40,
                                   color: Colors.blue[900],
@@ -60,7 +52,7 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                             ),
                           ),
                           Container(
-                            height: 100,
+                            height: screenHeight / 10,
                             alignment: Alignment.centerLeft,
                             child: Text(
                               'Labs:' + '   87',
@@ -71,7 +63,7 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                             ),
                           ),
                           Container(
-                            height: 100,
+                            height: screenHeight / 10,
                             alignment: Alignment.centerLeft,
                             child: Text(
                               'Quizzes:' + '    90',
@@ -82,7 +74,7 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                             ),
                           ),
                           Container(
-                            height: 100,
+                            height: screenHeight / 10,
                             alignment: Alignment.centerLeft,
                             child: Text(
                               'Assignments:' + '   1000',
@@ -93,7 +85,7 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                             ),
                           ),
                           Container(
-                            height: 100,
+                            height: screenHeight / 10,
                             alignment: Alignment.centerLeft,
                             child: Text(
                               'Exams:' + '  76',
@@ -106,6 +98,7 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                         ],
                       ))));
         } else {
+          double height = MediaQuery.of(context).size.height;
           return MaterialApp(
               debugShowCheckedModeBanner: false,
               home: Scaffold(
@@ -128,7 +121,7 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                             height: 100,
                             alignment: Alignment.center,
                             child: Text(
-                              'Current Grades:',
+                              'Current Grades',
                               style: TextStyle(
                                   fontSize: 40,
                                   color: Colors.blue[900],
@@ -139,7 +132,7 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                             height: 100,
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              'Labs:' + '   87',
+                              'Labs:' + '   0',
                               style: TextStyle(
                                   fontSize: 30,
                                   color: Colors.black,
@@ -150,7 +143,7 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                             height: 100,
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              'Quizzes:' + '    90',
+                              'Quizzes:' + '    0',
                               style: TextStyle(
                                   fontSize: 30,
                                   color: Colors.black,
@@ -161,7 +154,7 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                             height: 100,
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              'Assignments:' + '   94',
+                              'Assignments:' + '   0',
                               style: TextStyle(
                                   fontSize: 30,
                                   color: Colors.black,
@@ -172,7 +165,7 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                             height: 100,
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              'Exams:' + '  76',
+                              'Exams:' + '  0',
                               style: TextStyle(
                                   fontSize: 30,
                                   color: Colors.black,
