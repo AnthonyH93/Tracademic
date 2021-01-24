@@ -44,10 +44,14 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
           int labCounter = 1;
           int assignmentCounter = 1;
           int overallAverage = 0;
+
+          int gradeCounter = 0;
+
           for (var counter = 0; counter < courseIdentifiers.length; counter++) {
             if (courseIdentifiers[counter] != courseIndex) {
               //Skip grade
             } else {
+              gradeCounter += 1;
               switch (gradeCategories[counter]) {
                 case 0:
                   quizCounter += gradeWeights[counter];
@@ -74,32 +78,43 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
               overallAverage += gradeNumbers[counter] * gradeWeights[counter];
             }
           }
-          //Ready to calculate averages, be careful not to divide by 0
+          double quizAverageFinal = 0;
+          double examAverageFinal = 0;
+          double labAverageFinal = 0;
+          double assignmentAverageFinal = 0;
+          double overallAverageFinal = 0;
 
-          double overallAverageFinal = overallAverage /
-              (quizCounter + examCounter + labCounter + assignmentCounter - 4);
+          if (gradeCounter > 0) {
+            //Ready to calculate averages, be careful not to divide by 0
+            overallAverageFinal = overallAverage /
+                (quizCounter +
+                    examCounter +
+                    labCounter +
+                    assignmentCounter -
+                    4);
 
-          if (quizCounter > 1) {
-            quizCounter -= 1;
-          }
-          if (examCounter > 1) {
-            examCounter -= 1;
-          }
-          if (labCounter > 1) {
-            labCounter -= 1;
-          }
-          if (assignmentCounter > 1) {
-            assignmentCounter -= 1;
-          }
+            if (quizCounter > 1) {
+              quizCounter -= 1;
+            }
+            if (examCounter > 1) {
+              examCounter -= 1;
+            }
+            if (labCounter > 1) {
+              labCounter -= 1;
+            }
+            if (assignmentCounter > 1) {
+              assignmentCounter -= 1;
+            }
 
-          //Update overall average in database
-          updateCourseGrade(
-              courseIndex, overallAverageFinal.round(), courseName);
+            //Update overall average in database
+            updateCourseGrade(
+                courseIndex, overallAverageFinal.round(), courseName);
 
-          double quizAverageFinal = quizAverage / quizCounter;
-          double examAverageFinal = examAverage / examCounter;
-          double labAverageFinal = labAverage / labCounter;
-          double assignmentAverageFinal = assignmentAverage / assignmentCounter;
+            quizAverageFinal = quizAverage / quizCounter;
+            examAverageFinal = examAverage / examCounter;
+            labAverageFinal = labAverage / labCounter;
+            assignmentAverageFinal = assignmentAverage / assignmentCounter;
+          }
 
           return MaterialApp(
               debugShowCheckedModeBanner: false,
