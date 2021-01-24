@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tracademic_app/AddGradeForm.dart';
+import 'package:tracademic_app/forms/AddGradeForm.dart';
 
-import 'database/DatabaseHelper.dart';
+import '../database/DatabaseHelper.dart';
 import 'GraphPage.dart';
 import 'SummaryPage.dart';
 

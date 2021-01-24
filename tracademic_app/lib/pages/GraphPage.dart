@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:draw_graph/draw_graph.dart';
 import 'package:draw_graph/models/feature.dart';
-import 'models/constants.dart' as Constants;
-import 'database/DatabaseHelper.dart';
+import '../models/constants.dart' as Constants;
+import '../database/DatabaseHelper.dart';
 
 final Color darkBlue = Color.fromARGB(255, 18, 32, 47);
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:tracademic_app/OverviewPage.dart';
+import 'package:tracademic_app/pages/OverviewPage.dart';
 import 'database/DatabaseHelper.dart';
-import 'GraphPage.dart';
+import 'pages/GraphPage.dart';
 
-import 'LoginPage.dart';
+import 'pages/LoginPage.dart';
 
 void main() {
   runApp(Nav2App());

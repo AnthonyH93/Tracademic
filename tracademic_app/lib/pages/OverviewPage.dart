@@ -1,10 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:tracademic_app/AddCourseForm.dart';
+import 'package:tracademic_app/forms/AddCourseForm.dart';
 import 'CoursesPage.dart';
-import 'models/constants.dart' as Constants;
-import 'database/DatabaseHelper.dart';
+import '../models/constants.dart' as Constants;
+import '../database/DatabaseHelper.dart';
 
 class OverviewPage extends StatefulWidget {
   //create the courses page state class
