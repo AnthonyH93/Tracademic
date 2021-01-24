@@ -69,7 +69,7 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
               }
 
               //Add to overall average in any case
-              overallAverage += gradeWeights[counter];
+              overallAverage += gradeNumbers[counter] * gradeWeights[counter];
             }
           }
           //Ready to calculate averages
@@ -120,7 +120,7 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text(
-                                    examAverageFinal.toString(),
+                                    examAverageFinal.toStringAsFixed(1) + '%',
                                     style: TextStyle(
                                         fontSize: 30,
                                         color: Colors.black,
@@ -143,7 +143,7 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text(
-                                    '94%',
+                                    quizAverageFinal.toStringAsFixed(1) + '%',
                                     style: TextStyle(
                                         fontSize: 30,
                                         color: Colors.black,
@@ -166,7 +166,8 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text(
-                                    '99%',
+                                    assignmentAverageFinal.toStringAsFixed(1) +
+                                        '%',
                                     style: TextStyle(
                                         fontSize: 30,
                                         color: Colors.black,
@@ -189,7 +190,7 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text(
-                                    '64%',
+                                    labAverageFinal.toStringAsFixed(1) + '%',
                                     style: TextStyle(
                                         fontSize: 30,
                                         color: Colors.black,
@@ -212,7 +213,8 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text(
-                                    '88%',
+                                    overallAverageFinal.toStringAsFixed(1) +
+                                        '%',
                                     style: TextStyle(
                                         fontSize: 30,
                                         color: Colors.blue[900],
