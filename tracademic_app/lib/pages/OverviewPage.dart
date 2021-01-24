@@ -50,7 +50,7 @@ class _OverviewPageState extends State<OverviewPage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => TabBarDemo(
+                            builder: (context) => TabbedCourseView(
                                   course_index: index,
                                   course_name: courses[index],
                                 )));

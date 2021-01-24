@@ -22,7 +22,6 @@ class GraphPage extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.blueGrey[50],
-        // backgroundColor: Color.fromRGBO(54, 66, 97, 100),
         body: Padding(
           padding: EdgeInsets.fromLTRB(40, 0, 40, 0),
           child: Graphs(),
@@ -45,8 +44,6 @@ class _GraphsState extends State<Graphs> {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      //mainAxisAlignment: MainAxisAlignment.spaceAround,
-      //crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         Container(),
         LineGraph(
