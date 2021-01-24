@@ -54,71 +54,133 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                           Container(
                             height: screenHeight / 10,
                             alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Labs:' + '   87',
-                              style: TextStyle(
-                                  fontSize: 30,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                            ),
+                            child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Exams',
+                                    style: TextStyle(
+                                        fontSize: 30,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    '87%',
+                                    style: TextStyle(
+                                        fontSize: 30,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold),
+                                  )
+                                ]),
                           ),
                           Container(
                             height: screenHeight / 10,
                             alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Quizzes:' + '    90',
-                              style: TextStyle(
-                                  fontSize: 30,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                            ),
+                            child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Quizzes',
+                                    style: TextStyle(
+                                        fontSize: 30,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    '94%',
+                                    style: TextStyle(
+                                        fontSize: 30,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold),
+                                  )
+                                ]),
                           ),
                           Container(
                             height: screenHeight / 10,
                             alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Assignments:' + '   1000',
-                              style: TextStyle(
-                                  fontSize: 30,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                            ),
+                            child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Assignments',
+                                    style: TextStyle(
+                                        fontSize: 30,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    '99%',
+                                    style: TextStyle(
+                                        fontSize: 30,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold),
+                                  )
+                                ]),
                           ),
                           Container(
                             height: screenHeight / 10,
                             alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Exams:' + '  76',
-                              style: TextStyle(
-                                  fontSize: 30,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                            ),
+                            child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Labs',
+                                    style: TextStyle(
+                                        fontSize: 30,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    '64%',
+                                    style: TextStyle(
+                                        fontSize: 30,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold),
+                                  )
+                                ]),
+                          ),
+                          Container(
+                            height: screenHeight / 10,
+                            alignment: Alignment.centerLeft,
+                            child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Overall Average',
+                                    style: TextStyle(
+                                        fontSize: 30,
+                                        color: Colors.blue[900],
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    '88%',
+                                    style: TextStyle(
+                                        fontSize: 30,
+                                        color: Colors.blue[900],
+                                        fontWeight: FontWeight.bold),
+                                  )
+                                ]),
                           ),
                         ],
                       ))));
         } else {
-          double height = MediaQuery.of(context).size.height;
+          double screenHeight = MediaQuery.of(context).size.height;
+          screenHeight -= 100;
           return MaterialApp(
               debugShowCheckedModeBanner: false,
               home: Scaffold(
                   backgroundColor: Colors.blueGrey[50],
-                  // backgroundColor: Color.fromRGBO(54, 66, 97, 100),
                   body: Padding(
                       padding: EdgeInsets.fromLTRB(40, 0, 40, 0),
                       child: ListView(
                         children: <Widget>[
                           Container(
-                            height: 20,
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              '',
-                              style:
-                                  TextStyle(fontSize: 30, color: Colors.black),
-                            ),
-                          ),
-                          Container(
-                            height: 100,
+                            height: screenHeight / 10,
                             alignment: Alignment.center,
                             child: Text(
                               'Current Grades',
@@ -129,48 +191,119 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                             ),
                           ),
                           Container(
-                            height: 100,
+                            height: screenHeight / 10,
                             alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Labs:' + '   0',
-                              style: TextStyle(
-                                  fontSize: 30,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                            ),
+                            child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Exams',
+                                    style: TextStyle(
+                                        fontSize: 30,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    '0%',
+                                    style: TextStyle(
+                                        fontSize: 30,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold),
+                                  )
+                                ]),
                           ),
                           Container(
-                            height: 100,
+                            height: screenHeight / 10,
                             alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Quizzes:' + '    0',
-                              style: TextStyle(
-                                  fontSize: 30,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                            ),
+                            child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Quizzes',
+                                    style: TextStyle(
+                                        fontSize: 30,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    '0%',
+                                    style: TextStyle(
+                                        fontSize: 30,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold),
+                                  )
+                                ]),
                           ),
                           Container(
-                            height: 100,
+                            height: screenHeight / 10,
                             alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Assignments:' + '   0',
-                              style: TextStyle(
-                                  fontSize: 30,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                            ),
+                            child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Assignments',
+                                    style: TextStyle(
+                                        fontSize: 30,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    '0%',
+                                    style: TextStyle(
+                                        fontSize: 30,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold),
+                                  )
+                                ]),
                           ),
                           Container(
-                            height: 100,
+                            height: screenHeight / 10,
                             alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Exams:' + '  0',
-                              style: TextStyle(
-                                  fontSize: 30,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                            ),
+                            child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Labs',
+                                    style: TextStyle(
+                                        fontSize: 30,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    '0%',
+                                    style: TextStyle(
+                                        fontSize: 30,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold),
+                                  )
+                                ]),
+                          ),
+                          Container(
+                            height: screenHeight / 10,
+                            alignment: Alignment.centerLeft,
+                            child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Overall Average',
+                                    style: TextStyle(
+                                        fontSize: 30,
+                                        color: Colors.blue[900],
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    '0%',
+                                    style: TextStyle(
+                                        fontSize: 30,
+                                        color: Colors.blue[900],
+                                        fontWeight: FontWeight.bold),
+                                  )
+                                ]),
                           ),
                         ],
                       ))));
