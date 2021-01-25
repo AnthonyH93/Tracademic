@@ -136,6 +136,6 @@ class DatabaseHelper {
   Future<int> deleteGrades(int id) async {
     Database db = await instance.database;
     return await db
-        .delete(gradesTable, where: '$gradeIdentifier = ?', whereArgs: [id]);
+        .delete(gradesTable, where: '$relatedCourseId = ?', whereArgs: [id]);
   }
 }

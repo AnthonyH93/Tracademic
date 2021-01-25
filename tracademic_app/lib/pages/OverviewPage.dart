@@ -17,6 +17,7 @@ class _OverviewPageState extends State<OverviewPage> {
 
   var courses;
   var grades;
+  var courseIdentifiers;
 
   @override
   Widget build(BuildContext context) => FutureBuilder(
@@ -43,25 +44,67 @@ class _OverviewPageState extends State<OverviewPage> {
             child: ListView.separated(
               itemCount: courses.length,
               itemBuilder: (BuildContext context, int index) {
-                return InkWell(
-                  onTap: () async {
-                    final value = await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => TabbedCourseView(
-                                  course_index: index,
-                                  course_name: courses[index],
-                                )));
-                    setState(() {
-                      getAllCourses();
-                    });
-                  },
-                  child: ListTile(
-                    title: Text('${courses[index]}',
-                        style: TextStyle(fontSize: 24, color: Colors.white)),
-                    trailing: Text('${grades[index]}%',
-                        style: TextStyle(fontSize: 24, color: Colors.white)),
+                return Dismissible(
+                  key: Key(courses[index]),
+                  child: InkWell(
+                    onTap: () async {
+                      final value = await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => TabbedCourseView(
+                                    course_index: courseIdentifiers[index],
+                                    course_name: courses[index],
+                                  )));
+                      setState(() {
+                        getAllCourses();
+                      });
+                    },
+                    child: ListTile(
+                      title: Text('${courses[index]}',
+                          style: TextStyle(fontSize: 24, color: Colors.white)),
+                      trailing: Text('${grades[index]}%',
+                          style: TextStyle(fontSize: 24, color: Colors.white)),
+                    ),
                   ),
+                  confirmDismiss: (direction) async {
+                    final bool res = await showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            content: Text(
+                                "Are you sure you want to delete ${courses[index]}?"),
+                            actions: <Widget>[
+                              FlatButton(
+                                child: Text(
+                                  "Cancel",
+                                  style: TextStyle(color: Colors.black),
+                                ),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                              FlatButton(
+                                child: Text(
+                                  "Delete",
+                                  style: TextStyle(color: Colors.red),
+                                ),
+                                onPressed: () {
+                                  // Delete course and associated grades from database
+                                  deleteCourseFromDatabase(
+                                      courseIdentifiers[index]);
+                                  setState(() {
+                                    courses.removeAt(index);
+                                    getAllCourses();
+                                  });
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          );
+                        });
+                    return res;
+                  },
+                  background: Container(color: Colors.red),
                 );
               },
               separatorBuilder: (BuildContext context, int index) =>
@@ -157,20 +200,24 @@ class _OverviewPageState extends State<OverviewPage> {
       courses = [];
       return false;
     } else {
-      int gradeCount = await dbHelper.queryRowCountGrades();
-      if (gradeCount > 0) {
-        getGradeInformation(courseCount);
-      }
-
       List<Map<String, dynamic>> allCourses =
           await dbHelper.queryAllRowsCourses();
       List<String> array = [];
       List<int> array2 = [];
+      List<int> array3 = [];
       allCourses.forEach((row) {
         array.add(row[DatabaseHelper.courseName]);
         array2.add(row[DatabaseHelper.courseGrade]);
+        array3.add(row[DatabaseHelper.courseIdentifier]);
+        print(row);
       });
       courses = array;
+      courseIdentifiers = array3;
+      int gradeCount = await dbHelper.queryRowCountGrades();
+      if (gradeCount > 0) {
+        getGradeInformation(courseCount);
+      }
+      print("Grade count $gradeCount");
       if (gradeCount == 0) {
         grades = array2;
       }
@@ -195,7 +242,7 @@ class _OverviewPageState extends State<OverviewPage> {
       int gradeCounter = 0;
       int weightSummer = 0;
       for (var index2 = 0; index2 < courseIdList.length; index2++) {
-        if (courseIdList[index2] == index) {
+        if (courseIdList[index2] == courseIdentifiers[index]) {
           gradeCounter += weightList[index2];
           weightSummer += numericalGradesList[index2] * weightList[index2];
         } else {
@@ -210,5 +257,14 @@ class _OverviewPageState extends State<OverviewPage> {
       }
     }
     grades = averages;
+  }
+
+  void deleteCourseFromDatabase(int courseIdToDelete) async {
+    print("Trying to delete course with ID $courseIdToDelete");
+    final courseDeleted = await dbHelper.deleteCourses(courseIdToDelete);
+    print("Deleted $courseDeleted courses");
+    //Delete related grades
+    final gradesDeleted = await dbHelper.deleteGrades(courseIdToDelete);
+    print("Deleted $gradesDeleted grades");
   }
 }
