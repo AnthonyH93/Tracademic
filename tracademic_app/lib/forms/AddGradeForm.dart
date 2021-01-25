@@ -132,8 +132,8 @@ class _AddGradeFormState extends State<AddGradeForm> {
                   elevation: 16,
                   focusColor: Colors.white,
                   iconDisabledColor: Colors.white,
-                  dropdownColor: Colors.white,
-                  style: TextStyle(color: Colors.black),
+                  dropdownColor: Colors.deepPurple,
+                  style: TextStyle(color: Colors.white),
                   underline: Container(
                     height: 2,
                     color: Colors.deepPurpleAccent,
