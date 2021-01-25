@@ -165,9 +165,15 @@ class _OverviewPageState extends State<OverviewPage> {
       List<Map<String, dynamic>> allCourses =
           await dbHelper.queryAllRowsCourses();
       List<String> array = [];
-      allCourses.forEach((row) => array.add(row[DatabaseHelper.courseName]));
+      List<int> array2 = [];
+      allCourses.forEach((row) {
+        array.add(row[DatabaseHelper.courseName]);
+        array2.add(row[DatabaseHelper.courseGrade]);
+      });
       courses = array;
-      allCourses.forEach((row) => print(row));
+      if (gradeCount == 0) {
+        grades = array2;
+      }
 
       return true;
     }

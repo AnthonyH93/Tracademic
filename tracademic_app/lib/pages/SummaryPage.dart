@@ -128,7 +128,7 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                             child: Text(
                               'Current Grades',
                               style: TextStyle(
-                                  fontSize: 40,
+                                  fontSize: 35,
                                   color: Colors.blue[900],
                                   fontWeight: FontWeight.bold),
                             ),
@@ -143,14 +143,14 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                                   Text(
                                     'Exams',
                                     style: TextStyle(
-                                        fontSize: 30,
+                                        fontSize: 25,
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text(
                                     examAverageFinal.toStringAsFixed(1) + '%',
                                     style: TextStyle(
-                                        fontSize: 30,
+                                        fontSize: 25,
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold),
                                   )
@@ -166,14 +166,14 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                                   Text(
                                     'Quizzes',
                                     style: TextStyle(
-                                        fontSize: 30,
+                                        fontSize: 25,
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text(
                                     quizAverageFinal.toStringAsFixed(1) + '%',
                                     style: TextStyle(
-                                        fontSize: 30,
+                                        fontSize: 25,
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold),
                                   )
@@ -189,7 +189,7 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                                   Text(
                                     'Assignments',
                                     style: TextStyle(
-                                        fontSize: 30,
+                                        fontSize: 25,
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -197,7 +197,7 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                                     assignmentAverageFinal.toStringAsFixed(1) +
                                         '%',
                                     style: TextStyle(
-                                        fontSize: 30,
+                                        fontSize: 25,
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold),
                                   )
@@ -213,14 +213,14 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                                   Text(
                                     'Labs',
                                     style: TextStyle(
-                                        fontSize: 30,
+                                        fontSize: 25,
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text(
                                     labAverageFinal.toStringAsFixed(1) + '%',
                                     style: TextStyle(
-                                        fontSize: 30,
+                                        fontSize: 25,
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold),
                                   )
@@ -236,7 +236,7 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                                   Text(
                                     'Overall Average',
                                     style: TextStyle(
-                                        fontSize: 30,
+                                        fontSize: 25,
                                         color: Colors.blue[900],
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -244,7 +244,7 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                                     overallAverageFinal.toStringAsFixed(1) +
                                         '%',
                                     style: TextStyle(
-                                        fontSize: 30,
+                                        fontSize: 25,
                                         color: Colors.blue[900],
                                         fontWeight: FontWeight.bold),
                                   )
@@ -269,7 +269,7 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                             child: Text(
                               'Current Grades',
                               style: TextStyle(
-                                  fontSize: 40,
+                                  fontSize: 35,
                                   color: Colors.blue[900],
                                   fontWeight: FontWeight.bold),
                             ),
@@ -284,14 +284,14 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                                   Text(
                                     'Exams',
                                     style: TextStyle(
-                                        fontSize: 30,
+                                        fontSize: 25,
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text(
                                     '0%',
                                     style: TextStyle(
-                                        fontSize: 30,
+                                        fontSize: 25,
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold),
                                   )
@@ -307,14 +307,14 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                                   Text(
                                     'Quizzes',
                                     style: TextStyle(
-                                        fontSize: 30,
+                                        fontSize: 25,
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text(
                                     '0%',
                                     style: TextStyle(
-                                        fontSize: 30,
+                                        fontSize: 25,
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold),
                                   )
@@ -330,14 +330,14 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                                   Text(
                                     'Assignments',
                                     style: TextStyle(
-                                        fontSize: 30,
+                                        fontSize: 25,
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text(
                                     '0%',
                                     style: TextStyle(
-                                        fontSize: 30,
+                                        fontSize: 25,
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold),
                                   )
@@ -353,14 +353,14 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                                   Text(
                                     'Labs',
                                     style: TextStyle(
-                                        fontSize: 30,
+                                        fontSize: 25,
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text(
                                     '0%',
                                     style: TextStyle(
-                                        fontSize: 30,
+                                        fontSize: 25,
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold),
                                   )
@@ -376,14 +376,14 @@ class _SummaryOuterPageState extends State<SummaryOuterPage> {
                                   Text(
                                     'Overall Average',
                                     style: TextStyle(
-                                        fontSize: 30,
+                                        fontSize: 25,
                                         color: Colors.blue[900],
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text(
                                     '0%',
                                     style: TextStyle(
-                                        fontSize: 30,
+                                        fontSize: 25,
                                         color: Colors.blue[900],
                                         fontWeight: FontWeight.bold),
                                   )

@@ -9,8 +9,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  //TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
-
   final _formKey = GlobalKey<FormState>();
   final dbHelper = DatabaseHelper.instance;
   final controller1 = TextEditingController();
