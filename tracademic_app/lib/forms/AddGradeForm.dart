@@ -183,7 +183,6 @@ class _AddGradeFormState extends State<AddGradeForm> {
                     },
                     child: Text(
                       'Add Grade',
-                      style: TextStyle(fontSize: 15),
                     ),
                   ),
                 ),
